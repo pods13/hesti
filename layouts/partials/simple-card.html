@@ -1,0 +1,24 @@
+<div class="column is-4">
+	<div class="card is-shady">
+		<div class="card-image">
+			<a class="image is-4by3" href="#">
+				<img src="https://source.unsplash.com/RWnpyGtY1aU" alt="Placeholder image">
+			</a>
+		</div>
+		<div class="card-content">
+			<div class="content">
+				<h6 class="category">
+					<a href="#" title="">Category</a>
+				</h6>
+				<h4>
+					<a href="{{ .Permalink }}" title="">{{ .Title }}</a>
+				</h4>
+				{{ if .Description }} 
+					<p>{{ .Description | markdownify }}</p>
+				{{else}}
+					<p>{{ .Summary | plainify | safeHTML }}</p>
+				{{end}}
+			</div>
+		</div>
+	</div>
+</div>
