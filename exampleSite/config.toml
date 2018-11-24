@@ -4,3 +4,4 @@ title = "Hesti Blog"
 theme = "hesti"
 themesdir = "../.."
 enableRobotsTXT = true
+summarylength = 10
