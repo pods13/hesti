@@ -5,3 +5,4 @@ theme = "hesti"
 themesdir = "../.."
 enableRobotsTXT = true
 summarylength = 10
+canonifyURLs = true

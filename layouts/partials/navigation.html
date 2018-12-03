@@ -17,20 +17,20 @@
 			</div>
 
 			<div class="navbar-end">
-				<a class="navbar-item" href="/warframe-news/">News</a>
-				<div class="navbar-item has-dropdown is-hoverable">
-					<a class="navbar-link" href="/guides/">Guides</a>
-					<div class="navbar-dropdown">
-						<a class="navbar-item" href="/fortuna/">Warframe Fortuna</a>
-					</div>
-				</div>
-				<a class="navbar-item" href="/farming/">Farming</a>
-				<div class="navbar-item has-dropdown is-hoverable">
-					<a class="navbar-link" href="/builds/">Builds</a>
-					<div class="navbar-dropdown">
-						<a class="navbar-item" href="/warframe-builds/">Warframe Builds</a>
-					</div>
-				</div>
+				{{- range .menu -}}
+					{{- if .dropdown -}}
+						<div class="navbar-item has-dropdown is-hoverable">
+							<a class="navbar-link" href="{{ .url }}">{{ .name }}</a>
+							<div class="navbar-dropdown">
+								{{- range .items -}}
+									<a class="navbar-item" href="{{ .url }}">{{ .name }}</a>
+								{{- end -}}
+							</div>
+						</div>
+					{{- else -}}
+						<a class="navbar-item" href="{{ .url }}">{{ .name }}</a>
+					{{- end -}}
+				{{- end -}}
 			</div>
 		</div>
 	</div>
