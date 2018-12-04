@@ -1,0 +1,30 @@
+body {
+	background-color: #e5e5e5;
+}
+
+.main-raised {
+	position: relative;
+	background: #fff;
+	margin: -60px 30px 0;
+	border-radius: 6px 6px 0 0;
+}
+
+.hero {
+	position: relative;
+}
+
+.hero-image-filter {
+	background-position: center;
+	background-size: cover;
+}
+
+.hero-image-filter::before {
+	display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+	background-color: rgba(0,0,0,0.5);
+}

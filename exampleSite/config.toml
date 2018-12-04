@@ -6,3 +6,5 @@ themesdir = "../.."
 enableRobotsTXT = true
 summarylength = 10
 canonifyURLs = true
+[params]
+	image = "/images/hesti-header.jpg"
