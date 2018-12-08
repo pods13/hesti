@@ -4,17 +4,12 @@
 	<meta charset="UTF-8">
 	<title>Hesti</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
-    <style>
-    .latest-posts {
-    	padding: 5rem 0;
-    }
-    .features {
-		padding: 5rem 0;
-	}
-    </style>
 	<link rel="stylesheet" href="/assets/css/hesti.css" />
 </head>
 <body>
-	{{- block "main" . -}}{{- end -}}
+	{{- partial "hero-area.html" . -}}
+	<div class="main-raised">
+		{{- block "main" . -}}{{- end -}}
+	</div>
 </body>
 </html>

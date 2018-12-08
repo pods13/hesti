@@ -2,6 +2,13 @@ body {
 	background-color: #e5e5e5;
 }
 
+.latest-posts {
+	padding: 5rem 0;
+}
+.features {
+	padding: 5rem 0;
+}
+
 .main-raised {
 	position: relative;
 	background: #fff;
