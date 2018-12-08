@@ -4,8 +4,12 @@
 	</div>
 	<div class="hero-body hero-image-filter" style="background-image: url({{ cond (isset .Params "image") .Params.image .Site.Params.image }})">
 		<div class="container has-text-centered">
-			<h1 class="title">{{ .Title }}</h1>
-			<p class="subtitle">{{ .Params.description }}</p>
+			{{- if and (.IsHome) (.Site.Data.theme.hero) -}}
+				<h1 class="title">{{ .Site.Data.theme.hero.heading }}</h1>
+				<p class="subtitle">{{ .Site.Data.theme.hero.description }}</p>
+			{{- else -}}
+				<h1 class="title">{{ .Title }}</h1>
+			{{- end -}}
 		</div>			
 	</div>
 </header>
