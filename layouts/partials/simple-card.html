@@ -1,4 +1,4 @@
-<div class="column is-4">
+<article class="column is-4">
 	<div class="card is-shady">
 		<div class="card-image">
 			<a class="image is-4by3" href="{{ .Permalink }}" title="{{ .Title }}">
@@ -14,11 +14,15 @@
 		</div>
 		<div class="card-content">
 			<div class="content">
-				<h6 class="category">
-					<a href="#" title="">Category</a>
-				</h6>
+				{{- with .Params.categories -}}
+					<h6 class="category">
+						{{$categoryName := index . 0}}
+			            {{$categoryUrl := $categoryName | urlize }}
+						<a href="{{ $categoryUrl }}" title="View all posts in {{ $categoryName }}">{{ $categoryName }}</a>
+					</h6>
+				{{- end -}}
 				<h4>
-					<a href="{{ .Permalink }}" title="">{{ .Title }}</a>
+					<a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
 				</h4>
 				{{ if .Description }} 
 					<p>{{ .Description | markdownify }}</p>
@@ -28,4 +32,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+</article>
