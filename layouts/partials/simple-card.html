@@ -1,8 +1,15 @@
 <div class="column is-4">
 	<div class="card is-shady">
 		<div class="card-image">
-			<a class="image is-4by3" href="#">
-				<img src="https://source.unsplash.com/RWnpyGtY1aU" alt="Placeholder image">
+			<a class="image is-4by3" href="{{ .Permalink }}" title="{{ .Title }}">
+				{{- if isset .Params "image" -}}
+				    {{$image := split .Params.image "." }}
+					{{$thumbnail := delimit $image "-360x240." }}
+					<img src="{{ $thumbnail }}" title="{{ .Title }}" alt="{{ .Title }} image">
+				{{- else -}}
+					{{$thumbnail := .Site.Params.thumbnail }}
+					<img src="{{ $thumbnail }}" title="{{ .Title }}" alt="{{ .Title }} image">
+				{{- end -}}
 			</a>
 		</div>
 		<div class="card-content">

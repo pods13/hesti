@@ -14,7 +14,7 @@ tags:
 - data tidying
 - programming
 layout: post
-image: https://source.unsplash.com/RWnpyGtY1aU
+image: "/images/2018/12/post-image-example.jpg"
 ---
 
 <img src="https://i.imgur.com/EPgIMLi.jpg" class="align-right"/>

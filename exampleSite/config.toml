@@ -9,6 +9,7 @@ canonifyURLs = true
 paginate = 1
 [params]
 	image = "/images/hesti-header.jpg"
+	thumbnail = "/assets/images/default-thumbnail.jpg"
 [taxonomies]
 	category = "categories"
 [permalinks]
