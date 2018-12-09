@@ -3,7 +3,6 @@ title: "A Conversation with Hadley Wickham"
 date: 2013-09-27
 categories:
 - Statistics
-- R
 tags:
 - statistics
 - data science

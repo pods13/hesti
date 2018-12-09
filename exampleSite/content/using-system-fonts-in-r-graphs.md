@@ -4,7 +4,6 @@ slug: "using-system-fonts-in-r-graphs"
 date: 2014-01-01
 categories:
 - Programming
-- R
 tags:
 - programming
 - graphics

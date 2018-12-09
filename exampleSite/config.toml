@@ -6,5 +6,10 @@ themesdir = "../.."
 enableRobotsTXT = true
 summarylength = 10
 canonifyURLs = true
+paginate = 1
 [params]
 	image = "/images/hesti-header.jpg"
+[taxonomies]
+	category = "categories"
+[permalinks]
+	categories = "/:slug/"
