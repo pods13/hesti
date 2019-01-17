@@ -9,6 +9,7 @@
 				<p class="subtitle">{{ .Site.Data.theme.hero.description }}</p>
 			{{- else if eq .Params.layout "post" -}}
 				<h1 class="title">{{ .Title }}</h1>
+				{{- partial "post-breadcrumbs.html" . -}}
 				<div class="published-by">
 					Published by 
 					<a class="author" href="{{ $.Site.BaseURL }}">

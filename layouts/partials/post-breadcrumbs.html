@@ -1,0 +1,21 @@
+<nav class="breadcrumb is-centered has-bullet-separator" aria-label="breadcrumbs">
+	<ul class="breadcrumbs" vocab="http://schema.org/" typeof="BreadcrumbList">
+		{{$category := index .Params.categories 0}}
+		{{$categoryUrl := $category | urlize }}
+		<li property="itemListElement" typeof="ListItem">
+			<a property="item" typeof="WebPage" href="{{ $.Site.BaseURL }}">
+			<span property="name">{{ .Site.Title }}</span></a>
+			<meta property="position" content="1">
+		</li>
+		<li property="itemListElement" typeof="ListItem">
+			<a property="item" typeof="WebPage" href="/{{ $categoryUrl }}">
+			<span property="name">{{ $category }}</span></a>
+			<meta property="position" content="2">
+		</li>
+		<li class="is-active" property="itemListElement" typeof="ListItem">
+			<a property="item" typeof="WebPage" href="#" aria-current="page">
+			<span property="name">{{ .Title }}</span></a>
+			<meta property="position" content="3">
+		</li>
+	</ul>
+</nav>
