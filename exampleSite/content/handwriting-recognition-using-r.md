@@ -9,6 +9,7 @@ tags:
 - machine learning
 - R
 layout: post
+author: hesti
 ---
 
 This title is a bit exaggerating since handwriting recognition is an advanced topic

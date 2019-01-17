@@ -15,6 +15,7 @@ tags:
 - SQL
 - SQLite
 layout: post
+author: hesti
 ---
 
 It's well known that R is a memory based software, meaning that datasets must be copied into memory before

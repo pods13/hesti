@@ -12,6 +12,7 @@ tags:
 - font
 - graphics
 layout: post
+author: hesti
 ---
 
 Thanks to the [issue report](https://github.com/yihui/knitr/issues/799) by

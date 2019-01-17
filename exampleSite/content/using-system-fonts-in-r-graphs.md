@@ -10,6 +10,7 @@ tags:
 - font
 - R
 layout: post
+author: hesti
 ---
 
 This is a pretty old topic in R graphics.

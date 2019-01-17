@@ -12,6 +12,7 @@ tags:
 - RMySQL
 - Windows
 layout: post
+author: hesti
 ---
 
 This binary package supports R 2.13.x (32-bit/64-bit) and MySQL 5.5.16 (32-bit/64-bit).

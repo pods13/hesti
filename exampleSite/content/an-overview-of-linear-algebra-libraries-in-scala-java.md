@@ -14,6 +14,7 @@ tags:
 - Scala
 - Java
 layout: post
+author: hesti
 ---
 
 This semester I'm taking a course in big data computing using Scala/Spark, and

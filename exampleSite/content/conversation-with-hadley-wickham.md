@@ -15,6 +15,7 @@ tags:
 - programming
 layout: post
 image: "/images/2018/12/post-image-example.jpg"
+author: hesti
 ---
 
 <img src="https://i.imgur.com/EPgIMLi.jpg" class="align-right"/>

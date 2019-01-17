@@ -7,6 +7,14 @@
 			{{- if and (.IsHome) (.Site.Data.theme.hero) -}}
 				<h1 class="title">{{ .Site.Data.theme.hero.heading }}</h1>
 				<p class="subtitle">{{ .Site.Data.theme.hero.description }}</p>
+			{{- else if eq .Params.layout "post" -}}
+				<h1 class="title">{{ .Title }}</h1>
+				<div class="published-by">
+					Published by 
+					<a class="author" href="{{ $.Site.BaseURL }}">
+						<strong class="fn" itemprop="author">{{ .Params.Author }}</strong>
+					</a> on <time class="date updated published" datetime="{{ .PublishDate.Format "2006-01-02T15:04:05-0700" }}">{{ .PublishDate.Format "January 2, 2006" }}</time>
+				</div>
 			{{- else -}}
 				<h1 class="title">{{ .Title }}</h1>
 			{{- end -}}

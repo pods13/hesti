@@ -12,6 +12,7 @@ tags:
 - marginal
 - copula
 layout: post
+author: hesti
 ---
 
 The rumor says that Normal distribution is everything.

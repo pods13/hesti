@@ -10,6 +10,7 @@ tags:
 - markdown
 - LaTeX
 layout: post
+author: hesti
 ---
 
 Today I gave a presentation for GSO(Graduate Student Organization) of our department,
