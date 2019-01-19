@@ -16,6 +16,9 @@
 						<strong class="fn" itemprop="author">{{ .Params.Author }}</strong>
 					</a> on <time class="date updated published" datetime="{{ .PublishDate.Format "2006-01-02T15:04:05-0700" }}">{{ .PublishDate.Format "January 2, 2006" }}</time>
 				</div>
+			{{- else if eq .Kind "taxonomy" -}}
+				<h1 class="title">{{ .Title }}</h1>
+				{{- partial "category-breadcrumbs.html" . -}}
 			{{- else -}}
 				<h1 class="title">{{ .Title }}</h1>
 			{{- end -}}
