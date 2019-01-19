@@ -8,6 +8,8 @@ tags:
 - handwriting recognition
 - machine learning
 - R
+categories:
+- Programming
 layout: post
 author: hesti
 ---
