@@ -6,6 +6,12 @@
 	<title>
 		{{- if .IsHome -}}
 			{{ .Site.Params.seoTitle | default .Site.Title }}
+		{{- else if eq .Kind "taxonomy" -}}
+			{{ .Params.seoTitle | default .Title }}
+
+			{{- if gt $.Paginator.PageNumber 1 -}}
+			, Page {{ $.Paginator.PageNumber }} of {{ $.Paginator.TotalPages }} 
+			{{- end -}}
 		{{- else -}}
 			{{ .Params.seoTitle | default .Title }}
 		{{- end -}}
