@@ -3,7 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Hesti</title>
+	<title>
+		{{- if .IsHome -}}
+			{{ .Site.Params.seoTitle | default .Site.Title }}
+		{{- else -}}
+			{{ .Params.seoTitle | default .Title }}
+		{{- end -}}
+	</title>
 	<link rel="stylesheet" href="/assets/css/hesti.css" />
 </head>
 <body>
