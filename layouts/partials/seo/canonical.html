@@ -1,0 +1,11 @@
+{{- if eq .Kind "taxonomy" -}}
+	<link rel="canonical" href="{{ .Paginator.URL }}">
+	{{- if .Paginator.HasPrev -}}
+		<link rel="prev" href="{{ .Paginator.Prev.URL }}">
+	{{- end -}}
+	{{- if .Paginator.HasNext -}}
+		<link rel="next" href="{{ .Paginator.Next.URL }}">
+	{{- end -}}
+{{- else -}}
+	<link rel="canonical" href="{{ .Permalink }}">
+{{- end -}}
