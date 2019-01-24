@@ -1,7 +1,6 @@
 # hesti
 
 TODO
-Fix initial background color(without scroll) of dropdown item
 Add shadow on navbar after scroll
 Fix default bulma color 
 Remove sidebar for now

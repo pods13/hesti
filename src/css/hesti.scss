@@ -9,6 +9,7 @@ body {
 .latest-posts {
 	padding: 5rem 0;
 }
+
 .features {
 	padding: 5rem 0;
 }
@@ -40,13 +41,42 @@ body {
 	background-color: rgba(0,0,0,0.5);
 }
 
+.navbar.is-crystal,
+.navbar.is-crystal .navbar-item.has-dropdown > a.navbar-link  {
+	color: white;
+}
+
+.navbar.is-crystal .navbar-brand > a.navbar-item:hover {
+	background-color: transparent;
+	opacity: 0.75;
+}
+
+.navbar.is-crystal .navbar-end > a.navbar-item:hover,
+.navbar.is-crystal .navbar-item.has-dropdown:hover .navbar-link {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar.is-crystal .navbar-end .navbar-dropdown a.navbar-item {
+	color: black;
+
+	&:hover {
+		background-color: transparent;
+		color: #e91e63;
+	}
+}
+
 .navbar.navbar-color-on-scroll {
 	background-color: white;
+}
+
+.navbar.navbar-color-on-scroll,
+.navbar.navbar-color-on-scroll .navbar-end .navbar-item.has-dropdown .navbar-link {
 	color: #555;
 }
 
-.navbar-color-on-scroll .navbar-item.has-dropdown {
-	color: #555;
+.navbar.navbar-color-on-scroll .navbar-end > a.navbar-item:hover,
+.navbar.navbar-color-on-scroll .navbar-item.has-dropdown:hover .navbar-link {
+	color: #e91e63;
 }
 
 footer {

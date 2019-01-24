@@ -1,5 +1,5 @@
 {{ with .Site.Data.theme.navigation }}
-<nav id="main-navbar" class="navbar is-fixed-top" aria-label="main navigation">
+<nav id="main-navbar" class="navbar is-fixed-top is-crystal" aria-label="main navigation">
 	<div class="container">
 		<div class="navbar-brand">
 			<a class="navbar-item" href="{{ $.Site.BaseURL }}">
@@ -21,7 +21,7 @@
 					{{- if .dropdown -}}
 						<div class="navbar-item has-dropdown is-hoverable">
 							<a class="navbar-link" href="{{ .url }}">{{ .name }}</a>
-							<div class="navbar-dropdown">
+							<div class="navbar-dropdown is-boxed">
 								{{- range .items -}}
 									<a class="navbar-item" href="{{ .url }}">{{ .name }}</a>
 								{{- end -}}
