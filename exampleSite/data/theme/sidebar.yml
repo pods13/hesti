@@ -1,0 +1,10 @@
+items:
+  - header: "Popular Posts"
+    type: "list"
+    listItems:
+      - href: "/an-overview-of-linear-algebra-libraries-in-scala-java/"
+        text: An overview of linear algebra
+      - href: "/showtext-with-knitr/"
+        text: Using showtext in knitr
+      - href: "/windows-binary-of-rmysql/"
+        text: Windows binary of RMySQL
