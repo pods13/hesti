@@ -18,18 +18,18 @@
 					{{- if .dropdown -}}
 						<li class="nav-item ">
 							<div class="dropdown dropdown-group">
-								<a class="nav-link" href="{{ .url }}">{{ .name }}</a>
+								<a class="nav-link" href="{{ $.Site.BaseURL }}{{ .url }}/">{{ .name }}</a>
 
 								<span class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 									{{- range .items -}}
-										<a class="dropdown-item" href="{{ .url }}">{{ .name }}</a>
+										<a class="dropdown-item" href="{{ $.Site.BaseURL }}{{ .url }}/">{{ .name }}</a>
 									{{- end -}}
 								</div>
 							</div>
 						</li>
 					{{- else -}}
-						<li class="nav-item"><a class="nav-link" href="{{ .url }}">{{ .name }}</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ $.Site.BaseURL }}{{ .url }}/">{{ .name }}</a></li>
 					{{- end -}}
 				{{- end -}}
 			</ul>
