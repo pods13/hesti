@@ -7,7 +7,7 @@
 				<div class="col-md-4"></div>
 			</div>
 			<hr>
-			<p>{{- .Site.Data.theme.footer.copyright -}}</p>
+			<p>{{- .Site.Data.theme.footer.copyright | safeHTML -}}</p>
 		</div>
 	</div>
 </footer>
