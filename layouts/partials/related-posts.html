@@ -2,12 +2,10 @@
 {{ with $related }}
 <section class="related-posts">
 	<div class="container">
-		<div class="columns has-text-centered">
-			<div class="column">
-				<h2 class="title">Related Posts</h2>
-			</div>
+		<div class="text-center">
+			<h2 class="title">Related Posts</h2>
 		</div>
-		<div class="columns">
+		<div class="row">
 			{{- range . -}}
 				{{- partial "simple-card.html" . -}}
 			{{- end -}}

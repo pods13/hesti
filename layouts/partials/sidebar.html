@@ -1,16 +1,14 @@
 <aside>
-	<div>
-		{{- with .Site.Data.theme.sidebar -}}
-			{{- range .items -}}
-				{{- if eq .type "list" -}}
-					<h5 class="title is-5">{{ .header }}</h5>
-					<ul>
-						{{- range .listItems -}}
-							<li><a href="{{ .href }}" title="{{ .text }}">{{ .text }}</a></li>
-						{{- end -}}
-					</ul>
-				{{- end -}}
+	{{- with .Site.Data.theme.sidebar -}}
+		{{- range .items -}}
+			{{- if eq .type "list" -}}
+				<h4 class="title">{{ .header }}</h5>
+				<ul>
+					{{- range .listItems -}}
+						<li><a href="{{ .href }}" title="{{ .text }}">{{ .text }}</a></li>
+					{{- end -}}
+				</ul>
 			{{- end -}}
 		{{- end -}}
-	</div>
+	{{- end -}}
 </aside>

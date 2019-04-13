@@ -24,14 +24,23 @@
 	{{ partial "seo/canonical.html" . }}
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+	<link rel="stylesheet" href="../../maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/assets/css/material-kit.css" />
 	<link rel="stylesheet" href="/assets/css/hesti.css" />
 </head>
-<body>
+<body class="index-page {{ cond (eq .Params.layout "post") "blog-post" "" }}">
+	{{- partial "navigation.html" . -}}
+	
 	{{- partial "hero-area.html" . -}}
-	<div class="main-raised">
+	<div class="main main-raised">
 		{{- block "main" . -}}{{- end -}}
 		{{- partial "footer.html" . -}}
 	</div>
-	<script src="/assets/js/hesti.js"></script>
+	<script src="/assets/js/core/jquery.min.js" type="text/javascript"></script>
+	<script src="/assets/js/core/popper.min.js" type="text/javascript"></script>
+	<script src="/assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+	<script src="/assets/js/material-kit.js" type="text/javascript"></script>
 </body>
 </html>

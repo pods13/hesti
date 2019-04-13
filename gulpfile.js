@@ -49,4 +49,4 @@ gulp.task('watch', gulp.parallel('watch:styles', 'watch:js'));
 
 gulp.task('build', gulp.parallel('styles', 'js'));
 
-gulp.task('default', gulp.parallel('watch', 'styles', 'js'));
+gulp.task('default', gulp.parallel('watch'));

@@ -1,24 +1,18 @@
 <section class="latest-posts">
 	<div class="container">
-		<div class="columns has-text-centered">
-			<div class="column">
-				<h2 class="title">Latest Posts</h2>
+		<div class="row">
+			<div class="col-md-12 ml-auto mr-auto">
+				<div class="text-center">
+					<h2 class="title">Latest Posts</h2>
+				</div>
+				<div class="row">
+					{{- $numberOfPostsToShow := 9 -}}
+					{{- $posts := first $numberOfPostsToShow (where .Site.Pages "Params.layout" "post") -}}
+					{{- range $index, $element := $posts -}}
+						{{- partial "simple-card.html" . -}}
+					{{- end -}}
+				</div>
 			</div>
 		</div>
-		{{- $numberOfPostsToShow := 9 -}}
-		{{- $posts := first $numberOfPostsToShow (where .Site.Pages "Params.layout" "post") -}}
-		{{- $numberOfPosts := len $posts -}}
-		{{- range $index, $element := $posts -}}
-			{{- if eq $index 0 -}}
-				<div class="columns">
-			{{- end -}}
-			{{- partial "simple-card.html" . -}}
-			{{- if eq (add $index 1) (len $posts) -}}
-				</div>
-			{{- else if modBool (add $index 1) 3 -}}
-				</div>
-				<div class="columns">
-			{{- end -}}
-		{{- end -}}
 	</div>
 </section>

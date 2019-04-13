@@ -1,35 +1,33 @@
-<article class="column is-4">
-	<div class="card is-shady">
-		<div class="card-image">
-			<a class="image is-4by3" href="{{ .Permalink }}" title="{{ .Title }}">
+<article class="col-md-4">
+	<div class="card card-plain card-blog">
+		<div class="card-header card-header-image">
+			<a href="{{ .Permalink }}" title="{{ .Title }}">
 				{{- if isset .Params "image" -}}
 				    {{$image := split .Params.image "." }}
 					{{$thumbnail := delimit $image "-360x240." }}
-					<img src="{{ $thumbnail }}" title="{{ .Title }}" alt="{{ .Title }} image">
+					<img class="img img-raised" src="{{ $thumbnail }}" title="{{ .Title }}" alt="{{ .Title }} image">
 				{{- else -}}
 					{{$thumbnail := .Site.Params.thumbnail }}
-					<img src="{{ $thumbnail }}" title="{{ .Title }}" alt="{{ .Title }} image">
+					<img class="img img-raised" src="{{ $thumbnail }}" title="{{ .Title }}" alt="{{ .Title }} image">
 				{{- end -}}
 			</a>
 		</div>
-		<div class="card-content">
-			<div class="content">
-				{{- with .Params.categories -}}
-					<h6 class="category">
-						{{$categoryName := index . 0}}
-			            {{$categoryUrl := $categoryName | urlize }}
-						<a href="{{ $categoryUrl }}" title="View all posts in {{ $categoryName }}">{{ $categoryName }}</a>
-					</h6>
-				{{- end -}}
-				<h4>
-					<a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
-				</h4>
-				{{ if .Description }} 
-					<p>{{ .Description | markdownify }}</p>
-				{{else}}
-					<p>{{ .Summary | plainify | safeHTML }}</p>
-				{{end}}
-			</div>
+		<div class="card-body">
+			{{- with .Params.categories -}}
+				<h6 class="card-category text-success">
+					{{$categoryName := index . 0}}
+					{{$categoryUrl := $categoryName | urlize }}
+					<a href="/{{ $categoryUrl }}" title="View all posts in {{ $categoryName }}">{{ $categoryName }}</a>
+				</h6>
+			{{- end -}}
+			<h4 class="card-title">
+				<a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
+			</h4>
+			{{ if .Description }} 
+				<p class="card-description">{{ .Description | markdownify }}</p>
+			{{else}}
+				<p class="card-description">{{ .Summary | plainify | safeHTML }}</p>
+			{{end}}
 		</div>
 	</div>
 </article>

@@ -1,12 +1,10 @@
 {{- define "main" -}}
-	<section>
-		<div class="container">
-			<div class="columns is-multiline">
-				{{- range  .Paginator.Pages -}}
-					{{- partial "simple-card.html" . -}}
-				{{- end -}}
-			</div>
+	<div class="container">
+		<div class="row">
+			{{- range  .Paginator.Pages -}}
+				{{- partial "simple-card.html" . -}}
+			{{- end -}}
 		</div>
-	</section>
+	</div>
 	{{- partial "pagination.html" . -}}
 {{- end -}}

@@ -1,27 +1,28 @@
-<header class="hero is-dark is-large">
-	<div class="hero-head">
-		{{- partial "navigation.html" . -}}
-	</div>
-	<div class="hero-body hero-image-filter" style="background-image: url({{ cond (isset .Params "image") .Params.image .Site.Params.image }})">
-		<div class="container has-text-centered">
-			{{- if and (.IsHome) (.Site.Data.theme.hero) -}}
-				<h1 class="title">{{ .Site.Data.theme.hero.heading }}</h1>
-				<p class="subtitle">{{ .Site.Data.theme.hero.description }}</p>
-			{{- else if eq .Params.layout "post" -}}
-				<h1 class="title">{{ .Title }}</h1>
-				{{- partial "post-breadcrumbs.html" . -}}
-				<div class="published-by">
-					Published by 
-					<a class="author" href="{{ $.Site.BaseURL }}">
-						<strong class="fn" itemprop="author">{{ .Params.Author }}</strong>
-					</a> on <time class="date updated published" datetime="{{ .PublishDate.Format "2006-01-02T15:04:05-0700" }}">{{ .PublishDate.Format "January 2, 2006" }}</time>
+<header class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url({{ cond (isset .Params "image") .Params.image .Site.Params.image }});">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 ml-auto mr-auto">
+				<div class="brand text-center">
+					{{- if and (.IsHome) (.Site.Data.theme.hero) -}}
+						<h1 class="title">{{ .Site.Data.theme.hero.heading }}</h1>
+						<p>{{ .Site.Data.theme.hero.description }}</p>
+					{{- else if eq .Params.layout "post" -}}
+						<h1 class="title">{{ .Title }}</h1>
+						{{- partial "post/breadcrumbs.html" . -}}
+						<div class="published-by">
+							Published by 
+							<a class="author" href="{{ $.Site.BaseURL }}">
+								<strong class="fn" itemprop="author">{{ .Params.Author }}</strong>
+							</a> on <time class="date updated published" datetime="{{ .PublishDate.Format "2006-01-02T15:04:05-0700" }}">{{ .PublishDate.Format "January 2, 2006" }}</time>
+						</div>
+					{{- else if eq .Kind "taxonomy" -}}
+						<h1 class="title">{{ .Title }}</h1>
+						{{- partial "category/breadcrumbs.html" . -}}
+					{{- else -}}
+						<h1 class="title">{{ .Title }}</h1>
+					{{- end -}}
 				</div>
-			{{- else if eq .Kind "taxonomy" -}}
-				<h1 class="title">{{ .Title }}</h1>
-				{{- partial "category-breadcrumbs.html" . -}}
-			{{- else -}}
-				<h1 class="title">{{ .Title }}</h1>
-			{{- end -}}
-		</div>			
+			</div>
+		</div>
 	</div>
 </header>

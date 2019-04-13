@@ -1,12 +1,12 @@
 {{$pag := $.Paginator}}
 {{- if gt $pag.TotalPages 1 -}}
 	<section class="container">
-		<div class="columns">
-			<div class="column">
-				<nav class="pagination is-rounded is-centered" role="navigation" aria-label="pagination">
-					<ul class="pagination-list">
+		<div class="row">
+			<div class="col-md-12 ml-auto mr-auto">
+				<nav role="navigation" aria-label="pagination">
+					<ul class="pagination justify-content-center">
 						{{- if $pag.HasPrev -}}
-							<li><a class="prev pagination-link" href="{{ $pag.Prev.URL }}" aria-label="Go to Previous page">Previous</a></li>
+							<li class="page-item"><a class="prev page-link" href="{{ $pag.Prev.URL }}" aria-label="Go to Previous page">Previous</a></li>
 						{{- end -}}
 						{{ $.Scratch.Set "__paginator.ellipsed" false }}
 						{{ range $pag.Pagers }}
@@ -22,25 +22,27 @@
 							{{ end }}
 							{{ if $showNumber }}
 								{{ if eq . $pag }}
-									<li>
-										<span class="pagination-link is-current" aria-label="Page {{ .PageNumber }}" aria-current="page">
+									<li class="page-item active">
+										<a class="page-link disabled" href="#" aria-label="Page {{ .PageNumber }}" aria-current="page">
 											{{- .PageNumber -}}
-										</span>
+										</a>
 									</li>
 								{{ end }}
 								{{ if ne . $pag }}
-									<li>
-										<a class="pagination-link" href="{{ .URL }}" aria-label="Go to page {{ .PageNumber }}">
+									<li class="page-item">
+										<a class="page-link" href="{{ .URL }}" aria-label="Go to page {{ .PageNumber }}">
 											{{- .PageNumber -}}
 										</a>
 									</li>
 								{{ end }}
 							{{ else if ($.Scratch.Get "__paginator.shouldEllipse") }}
-								<li><span class="pagination-ellipsis">&hellip;</span></li>
+								<li class="page-item"><span class="pagination-ellipsis">&hellip;</span></li>
 							{{ end }}
 						{{ end }}
 						{{- if $pag.HasNext -}}
-							<li><a class="next pagination-link" href="{{ $pag.Next.URL }}" aria-label="Go to Next page">Next</a></li>
+							<li class="page-item">
+								<a class="next page-link" href="{{ $pag.Next.URL }}" aria-label="Go to Next page">Next</a>
+							</li>
 						{{- end -}}
 					</ul>
 				</nav>

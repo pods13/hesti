@@ -1,37 +1,38 @@
 {{ with .Site.Data.theme.navigation }}
-<nav id="main-navbar" class="navbar is-fixed-top is-crystal" aria-label="main navigation">
+
+<nav class="navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg" color-on-scroll="100">
 	<div class="container">
-		<div class="navbar-brand">
-			<a class="navbar-item" href="{{ $.Site.BaseURL }}">
-				{{ .brand }}
-			</a>
-
-			<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
-				<span aria-hidden="true"></span>
-				<span aria-hidden="true"></span>
-				<span aria-hidden="true"></span>
-			</a>
+		<div class="navbar-translate">
+			<a class="navbar-brand" href="{{ $.Site.BaseURL }}">{{ .brand }}</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="navbar-toggler-icon"></span>
+				<span class="navbar-toggler-icon"></span>
+				<span class="navbar-toggler-icon"></span>
+			</button>
 		</div>
-		<div id="navbar-menu" class="navbar-menu">
-			<div class="navbar-start">
-			</div>
 
-			<div class="navbar-end">
+		<div id="navbar-menu" class="collapse navbar-collapse">
+			<ul class="navbar-nav ml-auto">
 				{{- range .menu -}}
 					{{- if .dropdown -}}
-						<div class="navbar-item has-dropdown is-hoverable">
-							<a class="navbar-link" href="{{ .url }}">{{ .name }}</a>
-							<div class="navbar-dropdown is-boxed">
-								{{- range .items -}}
-									<a class="navbar-item" href="{{ .url }}">{{ .name }}</a>
-								{{- end -}}
+						<li class="nav-item ">
+							<div class="dropdown dropdown-group">
+								<a class="nav-link" href="{{ .url }}">{{ .name }}</a>
+
+								<span class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+									{{- range .items -}}
+										<a class="dropdown-item" href="{{ .url }}">{{ .name }}</a>
+									{{- end -}}
+								</div>
 							</div>
-						</div>
+						</li>
 					{{- else -}}
-						<a class="navbar-item" href="{{ .url }}">{{ .name }}</a>
+						<li class="nav-item"><a class="nav-link" href="{{ .url }}">{{ .name }}</a></li>
 					{{- end -}}
 				{{- end -}}
-			</div>
+			</ul>
 		</div>
 	</div>
 </nav>
