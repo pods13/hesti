@@ -1,0 +1,6 @@
+{{- $title := .Get "title" -}}
+{{- $alt := .Get "alt" -}}
+{{- $src := .Get "src" -}}
+{{- $srcset := .Get "srcset" -}}
+<img  class="lazyload alignnone" data-sizes="auto" title="{{ $title }}" alt="{{ $alt }}"
+	data-src="{{ $src }}" data-srcset="{{ $srcset }}"/>
