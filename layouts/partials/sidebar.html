@@ -1,14 +1,16 @@
-<aside>
-	{{- with .Site.Data.theme.sidebar -}}
-		{{- range .items -}}
-			{{- if eq .type "list" -}}
-				<h4 class="title">{{ .header }}</h5>
-				<ul>
-					{{- range .listItems -}}
-						<li><a href="{{ .href }}" title="{{ .text }}">{{ .text }}</a></li>
-					{{- end -}}
-				</ul>
+<div class="col-md-3 ml-auto mr-auto">
+	<aside>
+		{{- with .Site.Data.theme.sidebar -}}
+			{{- range .items -}}
+				{{- if eq .type "list" -}}
+					<h4 class="title">{{ .header }}</h5>
+					<ul>
+						{{- range .listItems -}}
+							<li><a href="{{ .href }}" title="{{ .text }}">{{ .text }}</a></li>
+						{{- end -}}
+					</ul>
+				{{- end -}}
 			{{- end -}}
 		{{- end -}}
-	{{- end -}}
-</aside>
+	</aside>
+</div>

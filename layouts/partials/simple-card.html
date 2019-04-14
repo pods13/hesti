@@ -5,10 +5,10 @@
 				{{- if isset .Params "image" -}}
 				    {{$image := split .Params.image "." }}
 					{{$thumbnail := delimit $image "-360x240." }}
-					<img class="img img-raised" src="{{ $thumbnail }}" title="{{ .Title }}" alt="{{ .Title }} image">
+					<img class="img img-raised lazyload" width="360" height="240" data-src="{{ $thumbnail }}" title="{{ .Title }}" alt="{{ .Title }} image">
 				{{- else -}}
 					{{$thumbnail := .Site.Params.thumbnail }}
-					<img class="img img-raised" src="{{ $thumbnail }}" title="{{ .Title }}" alt="{{ .Title }} image">
+					<img class="img img-raised lazyload" width="360" height="240" data-src="{{ $thumbnail }}" title="{{ .Title }}" alt="{{ .Title }} image">
 				{{- end -}}
 			</a>
 		</div>

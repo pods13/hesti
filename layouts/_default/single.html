@@ -1,4 +1,11 @@
 {{- define "main" -}}
-	{{- partial "post/two-column-post.html" . -}}
+	<div class="container">
+		<div class="row">
+			{{- partial "post/article.html" . -}}
+
+			<div class="col-md-1"></div>
+			{{- partial "sidebar.html" . -}}
+		</div>
+	</div>
 	{{- partial "related-posts.html" . -}}
 {{- end -}}
