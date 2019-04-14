@@ -20,6 +20,7 @@
 						{{- partial "category/breadcrumbs.html" . -}}
 					{{- else -}}
 						<h1 class="title">{{ .Title }}</h1>
+						<p>{{ .Params.description }}</p>
 					{{- end -}}
 				</div>
 			</div>
