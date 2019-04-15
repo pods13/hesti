@@ -2,18 +2,18 @@
 	<aside>
 		{{- with .Site.Data.theme.sidebar -}}
 			{{- range .items -}}
-				<h4 class="title">{{ .header }}</h5>
-				{{- if eq .type "list" -}}
-					<ul>
-						{{- range .listItems -}}
-							<li><a href="{{ .href }}" title="{{ .text }}">{{ .text }}</a></li>
-						{{- end -}}
-					</ul>
-				{{- else if eq .type "html" -}}
-					<div>
-						{{- .code | safeHTML -}}
-					</div>
-				{{- end -}}
+				<div>
+					<h4 class="title">{{ .header }}</h5>
+					{{- if eq .type "list" -}}
+						<ul>
+							{{- range .listItems -}}
+								<li><a href="{{ .href }}" title="{{ .text }}">{{ .text }}</a></li>
+							{{- end -}}
+						</ul>
+					{{- else if eq .type "html" -}}
+							{{- .code | safeHTML -}}
+					{{- end -}}
+				</div>
 			{{- end -}}
 		{{- end -}}
 	</aside>
