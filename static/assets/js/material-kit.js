@@ -92,7 +92,7 @@ materialKit = {
     initColoredShadows: function() {
         1 == materialKit.misc.colored_shadows && ("Explorer" == BrowserDetect.browser && BrowserDetect.version <= 12 || $('.card:not([data-colored-shadow="false"]) .card-header-image').each(function() {
             if ($card_img = $(this), is_on_dark_screen = $(this).closest(".section-dark, .section-image").length, 0 == is_on_dark_screen) {
-                var e = $card_img.find("img").attr("src"),
+                var e = $card_img.find("img").attr("data-src"),
                     t = 1 == $card_img.closest(".card-rotate").length,
                     a = $card_img,
                     r = $('<div class="colored-shadow"/>');
