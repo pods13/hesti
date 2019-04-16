@@ -18,13 +18,12 @@
   },
   "homepage": "https://github.com/pods13/hesti#readme",
   "dependencies": {
-    "bootstrap-material-design": "^4.1.1",
-    "bulma": "^0.7.2",
     "concurrently": "^4.1.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-sass": "^4.0.2",
     "node-sass-magic-importer": "^5.2.0",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "bootstrap": "4.0.x"
   }
 }
