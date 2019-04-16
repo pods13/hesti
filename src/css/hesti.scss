@@ -1,85 +1,99 @@
-@charset 'utf-8';
+/*!
 
-@import '_bulma';
+ =========================================================
+ * Material Kit - v2.0.5
+ =========================================================
 
-body {
-	background-color: #e5e5e5;
-}
+ * Product Page: https://www.creative-tim.com/product/material-kit
+ * Copyright 2018 Creative Tim (http://www.creative-tim.com)
 
-.latest-posts {
-	padding: 5rem 0;
-}
+ =========================================================
 
-.features {
-	padding: 5rem 0;
-}
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-.main-raised {
-	position: relative;
-	background-color: #fff;
-	margin: -60px 30px;
-	border-radius: 6px 6px 0 0;
-}
+ */
 
-.hero {
-	position: relative;
-}
+ @import "material-kit/variables";
+ @import "material-kit/mixins";
+ @import "material-kit/core-bootstrap";
+ @import "material-kit/reboot";
 
-.hero-image-filter {
-	background-position: center;
-	background-size: cover;
-}
+ // Core Components
+ @import "material-kit/layout";
+ @import "material-kit/buttons";
+ @import "material-kit/misc";
+ @import "material-kit/checkboxes";
+ @import "material-kit/custom-forms";
+ @import "material-kit/switches";
+ @import "material-kit/radios";
+ @import "material-kit/carousel";
+ @import "material-kit/forms";
+ @import "material-kit/input-group";
+ @import "material-kit/list-group";
+ @import "material-kit/nav";
+ @import "material-kit/images";
+ @import "material-kit/navbar";
+ @import "material-kit/badges";
+ @import "material-kit/alerts";
+ @import "material-kit/pagination";
+ @import "material-kit/pills";
+ @import "material-kit/info-areas";
+ @import "material-kit/type";
+ @import "material-kit/tabs";
+ @import "material-kit/tooltip";
+ @import "material-kit/popover";
+ @import "material-kit/modal";
+ @import "material-kit/dropdown";
+ @import "material-kit/drawer";
+ @import "material-kit/progress";
+ @import "material-kit/togglebutton";
+ @import "material-kit/ripples";
+ @import "material-kit/headers";
+ @import "material-kit/footers";
 
-.hero-image-filter::before {
-	display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    content: "";
-	background-color: rgba(0,0,0,0.5);
-}
+ // Cards
+ @import 'material-kit/cards';
+ @import 'material-kit/cards/card-carousel';
+ @import 'material-kit/cards/card-login';
+ @import 'material-kit/cards/card-plain';
 
-.navbar.is-crystal,
-.navbar.is-crystal .navbar-item.has-dropdown > a.navbar-link  {
+ // Core Plugins
+ @import 'material-kit/plugins/plugin-datetime-picker';
+ @import 'material-kit/plugins/plugin-nouislider';
+
+ // Sections and Example pages
+ @import "material-kit/example-pages";
+ @import "material-kit/responsive";
+
+.brand a,
+.brand a:link,
+.brand a:visited {
 	color: white;
 }
 
-.navbar.is-crystal .navbar-brand > a.navbar-item:hover {
-	background-color: transparent;
-	opacity: 0.75;
+a.disabled {
+	pointer-events: none;
 }
 
-.navbar.is-crystal .navbar-end > a.navbar-item:hover,
-.navbar.is-crystal .navbar-item.has-dropdown:hover .navbar-link {
-	background-color: rgba(255, 255, 255, 0.1);
+img[data-sizes="auto"] { 
+  display: block; 
+  width: 100%; 
 }
 
-.navbar.is-crystal .navbar-end .navbar-dropdown a.navbar-item {
-	color: black;
-
-	&:hover {
-		background-color: transparent;
-		color: #e91e63;
+@media (max-width:992px) {
+	.dropdown-group .nav-link {
+		display: inline-flex;
+		vertical-align: text-top;
 	}
 }
 
-.navbar.navbar-color-on-scroll {
-	background-color: white;
-}
+@media (min-width:992px) {
+	.dropdown-group .nav-link {
+		display: inline-flex;
+		vertical-align: middle;
+	}
 
-.navbar.navbar-color-on-scroll,
-.navbar.navbar-color-on-scroll .navbar-end .navbar-item.has-dropdown .navbar-link {
-	color: #555;
-}
-
-.navbar.navbar-color-on-scroll .navbar-end > a.navbar-item:hover,
-.navbar.navbar-color-on-scroll .navbar-item.has-dropdown:hover .navbar-link {
-	color: #e91e63;
-}
-
-footer {
-	background: #333C41;
-	color: white;
+	.dropdown-group > a.nav-link {
+		padding-right: 0 !important;
+	}
 }
