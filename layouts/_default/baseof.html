@@ -64,7 +64,8 @@
 			</div>
 		</div>
 	</header>
-	<div class="main {{ cond (eq .Params.flat true) "" "main-raised" }}">
+	{{- $isRaised := or (.IsHome) (eq .Kind "taxonomy") (eq .Params.layout "post") -}}
+	<div class="main {{ cond (eq $isRaised true) " main-raised" "" }}">
 		{{- block "main" . -}}{{- end -}}
 		{{- partial "footer.html" . -}}
 	</div>
