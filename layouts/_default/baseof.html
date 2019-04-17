@@ -33,10 +33,10 @@
 <body class="index-page {{ cond (eq .Params.layout "post") "blog-post" "" }}">
 	{{- partial "navigation.html" . -}}
 	
-	<header class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url({{ cond (isset .Params "image") .Params.image .Site.Params.image }});">
+	<header class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('{{ cond (isset .Params "image") .Params.image .Site.Params.image }}');">
 		<div class="container">
 			<div class="row">
-				{{- block "custome-hero-area" . -}}
+				{{- block "custom-hero-area" . -}}
 				<div class="col-md-12 mx-auto">
 					<div class="brand text-center">
 						{{- if and (.IsHome) (.Site.Data.theme.hero) -}}
@@ -67,18 +67,21 @@
 	{{- $isRaised := or (.IsHome) (eq .Kind "taxonomy") (eq .Params.layout "post") -}}
 	<div class="main {{ cond (eq $isRaised true) " main-raised" "" }}">
 		{{- block "main" . -}}{{- end -}}
-		<footer class="footer footer-black footer-big">
+		{{- $hasFooterImage := cond (isset .Params "footerimage") true false -}}
+		{{- $backgroundImage := safeCSS (printf "background-image: url('%s');" .Params.footerimage) -}}
+		<footer class="footer footer-big {{ cond (eq $hasFooterImage true) " footer-image" ""}}" 
+			style="{{- cond (eq $hasFooterImage true) $backgroundImage "" -}}">
 			<div class="container">
-				<div class="content">
-					<div class="row">
-						{{- block "footer-body" . -}}
+				<div class="row">
+					{{- block "footer-body" . -}}
 						<div class="col-md-4"></div>
 						<div class="col-md-4"></div>
 						<div class="col-md-4"></div>
-						{{- end -}}
+					{{- end -}}
+					<div class="col-md-12">
+						<hr>
+						<p class="text-left">{{- .Site.Data.theme.footer.copyright | safeHTML -}}</p>
 					</div>
-					<hr>
-					<p class="text-left">{{- .Site.Data.theme.footer.copyright | safeHTML -}}</p>
 				</div>
 			</div>
 		</footer>
