@@ -1,0 +1,12 @@
+<meta itemprop="name" content="{{ .Title }}">
+<meta itemprop="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+{{if .IsPage}}{{ $ISO8601 := "2006-01-02T15:04:05-07:00" }}{{ if not .PublishDate.IsZero }}
+<meta itemprop="datePublished" {{ printf "content=\"%s\"" (.PublishDate.Format "2006-01-02T15:04:05-0700") | safeHTMLAttr }}/>{{ end }}
+{{ if not .Date.IsZero }}<meta itemprop="dateModified" {{ printf "content=\"%s\"" (.Date.Format "2006-01-02T15:04:05-0700") | safeHTMLAttr }}/>
+{{ end }}
+<meta itemprop="wordCount" content="{{ .WordCount }}">
+{{ with .Params.image }}
+  <meta itemprop="image" content="{{ . | absURL }}">
+{{ end }}
+<meta itemprop="keywords" content="{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $terms }}{{ printf "%s," $term }}{{ end }}{{ end }}" />
+{{ end }}
