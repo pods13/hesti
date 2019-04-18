@@ -33,6 +33,7 @@
 <body class="index-page {{ cond (eq .Params.layout "post") "blog-post" "" }}">
 	{{- partial "navigation.html" . -}}
 	
+	{{- block "custom-header" . -}}
 	<header class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('{{ cond (isset .Params "image") .Params.image .Site.Params.image }}');">
 		<div class="container">
 			<div class="row">
@@ -64,6 +65,7 @@
 			</div>
 		</div>
 	</header>
+	{{- end -}}
 	{{- $isRaised := or (.IsHome) (eq .Kind "taxonomy") (eq .Params.layout "post") -}}
 	<div class="main {{ cond (eq $isRaised true) " main-raised" "" }}">
 		{{- block "main" . -}}{{- end -}}
