@@ -20,7 +20,7 @@
 							<div class="dropdown dropdown-group">
 								<a class="nav-link" href="{{ $.Site.BaseURL }}{{ .url }}/">{{ .name }}</a>
 
-								<span class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
+								<span class="nav-link dropdown-toggle dropdown-toggle-split" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 									{{- range .items -}}
 										<a class="dropdown-item" href="{{ $.Site.BaseURL }}{{ .url }}/">{{ .name }}</a>
