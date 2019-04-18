@@ -2,7 +2,6 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const rimraf = require('rimraf');
 const autoprefixer = require('gulp-autoprefixer');
-const nodeSassMagicImporter = require('node-sass-magic-importer');
 
 const stylesSource = 'src/css/**/*.scss';
 const stylesDestDirectory = 'static/assets/css';
@@ -23,7 +22,6 @@ gulp.task('styles', gulp.series('clean:styles', () => {
 	return gulp.src(stylesSource)
 		.pipe(sass({
 			includePaths: ['node_modules'],
-			importer: nodeSassMagicImporter(),
 			outputStyle: 'compressed'
 		}).on('error', sass.logError))
 		.pipe(autoprefixer())
