@@ -3,7 +3,7 @@
 		{{- with .Site.Data.theme.sidebar -}}
 			{{- range .items -}}
 				<div>
-					<h4 class="title">{{ .header }}</h5>
+					<h4 class="title">{{ .header }}</h4>
 					{{- if eq .type "list" -}}
 						<ul>
 							{{- range .listItems -}}

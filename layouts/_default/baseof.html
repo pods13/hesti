@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,8 +24,8 @@
 	{{ partial "seo/canonical.html" . }}
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
-	
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700%7CRoboto+Slab:400,700&amp;subset=latin,latin-ext" type="text/css" media="all">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/fontawesome.min.css">
 	<link rel="stylesheet" href="/assets/css/hesti.css" />
 	{{- block "extra-styles" . -}}{{- end -}}
@@ -94,12 +94,12 @@
 			</div>
 		</footer>
 	</div>
-	<script src="/assets/js/core/jquery.min.js" type="text/javascript"></script>
-	<script src="/assets/js/core/popper.min.js" type="text/javascript"></script>
-	<script src="/assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-	<script src="/assets/js/material-kit.js" type="text/javascript"></script>
-	<script src="/assets/js/lazysizes.min.js" type="text/javascript"></script>
-	<script src="/assets/js/ls.unveilhooks.min.js" type="text/javascript"></script>
+	<script src="/assets/js/core/jquery.min.js"></script>
+	<script src="/assets/js/core/popper.min.js"></script>
+	<script src="/assets/js/core/bootstrap-material-design.min.js"></script>
+	<script src="/assets/js/material-kit.js"></script>
+	<script src="/assets/js/lazysizes.min.js"></script>
+	<script src="/assets/js/ls.unveilhooks.min.js"></script>
 	{{- block "extra-scripts" . -}}{{- end -}}
 </body>
 </html>
