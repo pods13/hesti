@@ -1,11 +1,11 @@
-.index-page{
+.page{
     .section-components h6.description{
         margin-top: 5px;
         margin-bottom: 30px;
     }
 
-    .page-header{
-        height: 90vh;
+    .page-header {
+        height: 100vh;
         overflow: hidden;
     }
     .brand{
@@ -29,6 +29,19 @@
         font-size: 1.5em;
     }
 }
+
+.home-page, .category-page {
+    .page-header{
+        height: 85vh;
+    }
+}
+
+.post-page {
+    .page-header{
+        height: 70vh;
+    }
+}
+
 .section{
   padding: 70px 0;
 }

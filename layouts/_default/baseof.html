@@ -36,7 +36,15 @@
 	{{- partial "seo/twitter_cards.html" . -}}
     {{- template "_internal/google_analytics.html" . -}}
 </head>
-<body class="index-page {{ cond (eq .Params.layout "post") "blog-post" "" }}">
+{{- .Scratch.Set "bodyClasses" "page" -}}
+{{- if .IsHome -}}
+{{- .Scratch.Add "bodyClasses" " home-page" -}}
+{{- else if eq .Kind "taxonomy" -}}
+{{- .Scratch.Add "bodyClasses" " category-page" -}}
+{{- else if eq .Params.layout "post" -}}
+{{- .Scratch.Add "bodyClasses" " post-page" -}}
+{{- end -}}
+<body class="{{- .Scratch.Get "bodyClasses" -}}">
 	{{- partial "navigation.html" . -}}
 	
 	{{- block "custom-header" . -}}
