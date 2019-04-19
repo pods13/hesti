@@ -9,7 +9,7 @@
 					{{- $numberOfPostsToShow := 9 -}}
 					{{- $posts := first $numberOfPostsToShow (where .Site.Pages "Params.layout" "post") -}}
 					{{- range $index, $element := $posts -}}
-						{{- partial "simple-card.html" . -}}
+						{{- partial "plain-card.html" . -}}
 					{{- end -}}
 				</div>
 			</div>
