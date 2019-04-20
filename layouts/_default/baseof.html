@@ -89,7 +89,7 @@
 		{{- block "main" . -}}{{- end -}}
 		{{- $hasFooterImage := cond (isset .Params "footerimage") true false -}}
 		{{- $backgroundImage := safeCSS (printf "background-image: url('%s');" .Params.footerimage) -}}
-		<footer class="footer footer-big {{ cond (eq $hasFooterImage true) " footer-image" ""}}" 
+		<footer class="footer footer-big footer-black{{ cond (eq $hasFooterImage true) " footer-image" ""}}" 
 			style="{{- cond (eq $hasFooterImage true) $backgroundImage "" -}}">
 			<div class="container">
 				<div class="row">

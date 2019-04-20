@@ -91,3 +91,35 @@ footer{
         float: none;
     }
 }
+
+
+
+.footer-black {
+    background: #232323;
+    background: radial-gradient(ellipse at center, #585858 0, #232323 100%);
+    background-size: 550% 450%;
+
+    a {
+        color: $white;
+        opacity: .86
+        
+        &:focus,
+        &:hover {
+            opacity: 1
+        }
+    }
+
+    .copyright,
+    .footer-brand,
+    .footer-brand:focus,
+    .footer-brand:hover,
+    h4,
+    h5,
+    i {
+        color: $white;
+    }
+
+    hr {
+        border-color: hsla(0, 0%, 100%, .2)
+    }
+}
