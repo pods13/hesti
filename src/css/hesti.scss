@@ -1,18 +1,3 @@
-/*!
-
- =========================================================
- * Material Kit - v2.0.5
- =========================================================
-
- * Product Page: https://www.creative-tim.com/product/material-kit
- * Copyright 2018 Creative Tim (http://www.creative-tim.com)
-
- =========================================================
-
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
- */
-
  @import "material-kit/variables";
  @import "material-kit/mixins";
  @import "material-kit/core-bootstrap";
@@ -64,36 +49,3 @@
  // Sections and Example pages
  @import "material-kit/example-pages";
  @import "material-kit/responsive";
-
-.brand a,
-.brand a:link,
-.brand a:visited {
-	color: white;
-}
-
-a.disabled {
-	pointer-events: none;
-}
-
-img[data-sizes="auto"] { 
-  display: block; 
-  width: 100%; 
-}
-
-@media (max-width:992px) {
-	.dropdown-group .nav-link {
-		display: inline-flex;
-		vertical-align: text-top;
-	}
-}
-
-@media (min-width:992px) {
-	.dropdown-group .nav-link {
-		display: inline-flex;
-		vertical-align: middle;
-	}
-
-	.dropdown-group > a.nav-link {
-		padding-right: 0 !important;
-	}
-}

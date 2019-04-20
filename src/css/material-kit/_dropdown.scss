@@ -203,3 +203,22 @@
     transform: scale(1);
     top: 0;
 }
+
+
+@media (max-width:992px) {
+  .dropdown-group .nav-link {
+    display: inline-flex;
+    vertical-align: text-top;
+  }
+}
+
+@media (min-width:992px) {
+  .dropdown-group .nav-link {
+    display: inline-flex;
+    vertical-align: middle;
+  }
+
+  .dropdown-group > a.nav-link {
+    padding-right: 0 !important;
+  }
+}

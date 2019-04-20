@@ -8,3 +8,8 @@
 .rounded{
     border-radius: $border-radius-large !important;
 }
+
+img[data-sizes="auto"] { 
+  display: block; 
+  width: 100%; 
+}
