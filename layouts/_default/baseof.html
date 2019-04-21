@@ -27,12 +27,14 @@
 	
 	{{ partial "seo/canonical.html" . }}
 
+	{{- "<!-- inject:styles -->" | safeHTML -}}
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700%7CRoboto+Slab:400,700&amp;subset=latin,latin-ext" type="text/css" media="all">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/fontawesome.min.css">
 	<link rel="stylesheet" href="/assets/css/hesti.css" />
 	{{- block "extra-styles" . -}}{{- end -}}
+	{{- "<!-- endinject -->" | safeHTML -}}
 
 	{{- partial "seo/opengraph.html" . -}}
     {{- template "_internal/google_news.html" . -}}
