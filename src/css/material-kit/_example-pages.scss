@@ -45,6 +45,21 @@
     .page-header{
         height: 70vh;
     }
+
+    .section-text {
+        padding-bottom: 0
+    }
+
+    .section-text p {
+        font-size: 1.188rem;
+        line-height: 1.5em;
+        color: #555;
+        margin-bottom: 30px
+    }
+
+    .section-text .blockquote p {
+        font-size: 1.5rem
+    }
 }
 
 .section{
