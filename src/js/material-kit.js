@@ -102,8 +102,8 @@ materialKit = {
           is_on_dark_screen = $(this).closest('.section-dark, .section-image').length;
 
           // we block the generator of the colored shadows on dark sections, because they are not natural
-          if (is_on_dark_screen == 0) {
-            var img_source = $card_img.find('img').attr('src');
+          if (is_on_dark_screen === 0) {
+            var img_source = $card_img.find('img').attr('data-src');
             var is_rotating = $card_img.closest('.card-rotate').length == 1 ? true : false;
             var $append_div = $card_img;
 
