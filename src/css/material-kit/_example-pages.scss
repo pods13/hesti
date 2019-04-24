@@ -12,15 +12,14 @@
         color: $white-color;
         text-align: center;
 
-        h1{
+        .title {
             font-size: 4.2rem;
             font-weight: 600;
             display: inline-block;
             position: relative;
         }
-        h3{
+        .sub-title {
             font-size: 1.313rem;
-            max-width: 500px;
             margin: 10px auto 0;
         }
         a,
