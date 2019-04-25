@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	{{- partial "seo/meta.html" . -}}
 	<title>
 		{{- if .IsHome -}}
 			{{ .Site.Params.seoTitle | default .Site.Title }}
@@ -20,10 +19,6 @@
 	<link rel="shortcut icon" href="/{{ .Site.Params.favicon }}" type="image/x-icon"/>
 	<link rel="icon" href="/{{ .Site.Params.favicon }}" type="image/x-icon"/>
 	{{- end -}}
-	<meta name="HandheldFriendly" content="True">
-	<meta name="MobileOptimized" content="320">
-
-	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	
 	{{ partial "seo/canonical.html" . }}
 
