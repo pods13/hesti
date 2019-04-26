@@ -42,6 +42,8 @@
 {{- .Scratch.Add "bodyClasses" " home-page" -}}
 {{- else if eq .Kind "taxonomy" -}}
 {{- .Scratch.Add "bodyClasses" " category-page" -}}
+{{- else if eq .Kind "404" -}}
+{{- .Scratch.Add "bodyClasses" " error-page" -}}
 {{- else if eq .Params.layout "post" -}}
 {{- .Scratch.Add "bodyClasses" " post-page" -}}
 {{- end -}}
@@ -49,12 +51,21 @@
 	{{- partial "navigation.html" . -}}
 	
 	{{- block "custom-header" . -}}
-	<header class="page-header header-filter purple-filter clear-filter" data-parallax="true" style="background-image: url('{{ cond (isset .Params "image") .Params.image .Site.Params.image }}');">
+	{{- if eq .Kind "404" -}}
+	{{- .Scratch.Set "headerImage" "https://pbs.twimg.com/media/DWmcTLkWsAEvyrb.jpg" -}}
+	{{- else if isset .Params "image" -}}
+	{{- .Scratch.Set "headerClasses" " purple-filter clear-filter" -}}
+	{{- .Scratch.Set "headerImage" .Params.image -}}
+	{{- else -}}
+	{{- .Scratch.Set "headerClasses" " purple-filter clear-filter" -}}
+	{{- .Scratch.Set "headerImage" .Site.Params.image -}}
+	{{- end -}}
+	<header class="page-header header-filter{{- .Scratch.Get "headerClasses" -}}" data-parallax="true" style="background-image: url('{{- .Scratch.Get "headerImage" -}}');">
 		<div class="container">
 			<div class="row">
 				{{- block "custom-hero-area" . -}}
 				<div class="col-md-12 mx-auto">
-					<div class="brand text-center">
+					<div class="brand">
 						{{- if and (.IsHome) (.Site.Data.theme.hero) -}}
 							<h1 class="title">{{ .Site.Data.theme.hero.heading }}</h1>
 							<p class="sub-title">{{ .Site.Data.theme.hero.description }}</p>
@@ -70,6 +81,9 @@
 						{{- else if eq .Kind "taxonomy" -}}
 							<h1 class="title">{{ .Title }}</h1>
 							{{- partial "category/breadcrumbs.html" . -}}
+						{{- else if eq .Kind "404" -}}
+							<h1 class="title">404</h1>
+							<p class="sub-title">We couldn’t find this page. Maybe it’s out there, somewhere...<br>You can always find insightful posts on our <a href="{{- $.Site.BaseURL -}}" title="{{- $.Site.Title -}}">homepage</a>.</p>
 						{{- else -}}
 							<h1 class="title">{{ .Title }}</h1>
 							<p>{{ .Params.description }}</p>
@@ -81,9 +95,10 @@
 		</div>
 	</header>
 	{{- end -}}
+	{{- block "main" . -}}
 	{{- $isRaised := or (.IsHome) (eq .Kind "taxonomy") (eq .Params.layout "post") -}}
 	<div class="main {{ cond (eq $isRaised true) " main-raised" "" }}">
-		{{- block "main" . -}}{{- end -}}
+		{{- block "main-body" . -}}{{- end -}}
 		{{- $hasFooterImage := cond (isset .Params "footerimage") true false -}}
 		{{- $backgroundImage := safeCSS (printf "background-image: url('%s');" .Params.footerimage) -}}
 		<footer class="footer footer-big footer-black{{ cond (eq $hasFooterImage true) " header-filter footer-image black-filter clear-filter" ""}}" 
@@ -103,6 +118,7 @@
 			</div>
 		</footer>
 	</div>
+	{{- end -}}
 	<script src="/assets/js/core/jquery.min.js"></script>
 	<script src="/assets/js/core/popper.min.js"></script>
 	<script src="/assets/js/core/bootstrap-material-design.min.js"></script>

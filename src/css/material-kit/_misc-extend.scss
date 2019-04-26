@@ -145,11 +145,16 @@
     max-width: 880px;
   }
 
-  .title {
-    font-size: 12em;
-    color: $white-color;
-    letter-spacing: $mdb-input-font-size-base;
-    font-weight: $font-weight-extra-bold;
-  }
+  .brand {
+    .title {
+      font-size: 12em;
+      color: $white-color;
+      letter-spacing: $mdb-input-font-size-base;
+      font-weight: $font-weight-extra-bold;
+    }
 
+    .sub-title {
+      color: #999;
+    }
+  }
 }
