@@ -119,12 +119,7 @@
 		</footer>
 	</div>
 	{{- end -}}
-	<script src="/assets/js/core/jquery.min.js"></script>
-	<script src="/assets/js/core/popper.min.js"></script>
-	<script src="/assets/js/core/bootstrap-material-design.min.js"></script>
-	<script src="/assets/js/material-kit.js"></script>
-	<script src="/assets/js/lazysizes.min.js"></script>
-	<script src="/assets/js/ls.unveilhooks.min.js"></script>
+	{{- partial "site-scripts.html" . -}}
 	{{- block "extra-scripts" . -}}{{- end -}}
 </body>
 </html>
