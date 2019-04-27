@@ -53,8 +53,8 @@
 	{{- partial "navigation.html" . -}}
 	
 	{{- block "custom-header" . -}}
-	{{- if eq .Kind "404" -}}
-	{{- .Scratch.Set "headerImage" "https://pbs.twimg.com/media/DWmcTLkWsAEvyrb.jpg" -}}
+	{{- if and (eq .Kind "404") (isset .Site.Data.theme "notfound") -}}
+	{{- .Scratch.Set "headerImage" .Site.Data.theme.notfound.image -}}
 	{{- else if isset .Params "image" -}}
 	{{- .Scratch.Set "headerClasses" " purple-filter clear-filter" -}}
 	{{- .Scratch.Set "headerImage" .Params.image -}}
