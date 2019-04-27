@@ -49,11 +49,15 @@
         padding-bottom: 0
     }
 
-    .section-text p {
+    .section-text p, .section-text ul {
         font-size: 1.188rem;
         line-height: 1.5em;
         color: #555;
         margin-bottom: 30px
+    }
+
+    .section-text .table thead th {
+        font-size: 1.188rem;
     }
 
     .section-text .blockquote p {
