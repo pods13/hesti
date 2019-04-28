@@ -23,6 +23,7 @@
 	{{ partial "seo/canonical.html" . }}
 
     {{- template "_internal/google_analytics.html" . -}}
+    {{- partial "google-adsense.html" . -}}
 	{{- partial "header-scripts.html" . -}}
 
 	{{- "<!-- inject:styles -->" | safeHTML -}}
@@ -38,7 +39,6 @@
     {{- template "_internal/google_news.html" . -}}
 	{{- partial "seo/schema.html" . -}}
 	{{- partial "seo/twitter_cards.html" . -}}
-    {{ partial "google-adsense.html" . }}	
 </head>
 {{- .Scratch.Set "bodyClasses" "page" -}}
 {{- if .IsHome -}}
