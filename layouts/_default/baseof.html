@@ -38,6 +38,7 @@
     {{- template "_internal/google_news.html" . -}}
 	{{- partial "seo/schema.html" . -}}
 	{{- partial "seo/twitter_cards.html" . -}}
+    {{ partial "google-adsense.html" . }}	
 </head>
 {{- .Scratch.Set "bodyClasses" "page" -}}
 {{- if .IsHome -}}
