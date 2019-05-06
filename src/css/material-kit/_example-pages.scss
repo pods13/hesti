@@ -205,8 +205,8 @@
   .page{
     .brand{
         .title {
-            font-size: 1.4rem;
-            margin-top: 0;
+            font-size: 1.6rem;
+            margin-bottom: 0;
         }
         .sub-title {
             font-size: 1rem;
@@ -215,15 +215,9 @@
     }
   }
 
-  .home-page, .category-page {
-    .page-header{
-        height: 100vh;
-    }
-}
-
-.post-page {
-    .page-header{
-        height: 100vh;
-    }
+    .post-page {
+        .page-header{
+            height: 80vh;
         }
+    }
 }
