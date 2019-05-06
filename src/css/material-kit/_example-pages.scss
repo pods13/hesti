@@ -13,7 +13,7 @@
         text-align: center;
 
         .title {
-            font-size: 4.2rem;
+            font-size: 2.4rem;
             font-weight: 600;
             display: inline-block;
             position: relative;
@@ -197,4 +197,33 @@
         }
     }
 
+}
+
+
+
+@include media-breakpoint-down(sm) {
+  .page{
+    .brand{
+        .title {
+            font-size: 1.4rem;
+            margin-top: 0;
+        }
+        .sub-title {
+            font-size: 1rem;
+            margin: 0;
+        }
+    }
+  }
+
+  .home-page, .category-page {
+    .page-header{
+        height: 100vh;
+    }
+}
+
+.post-page {
+    .page-header{
+        height: 100vh;
+    }
+        }
 }
