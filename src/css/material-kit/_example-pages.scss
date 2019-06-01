@@ -4,14 +4,28 @@
         margin-bottom: 30px;
     }
 
-    .page-header {
+    .page-header.has-hero-image {
         height: 100vh;
         overflow: hidden;
-    }
-    .brand{
-        color: $white-color;
-        text-align: center;
 
+        .brand{
+            color: $white-color;
+            text-align: center;
+
+            .breadcrumb {
+                justify-content: center;
+            }
+
+            a,
+            a:link,
+            a:visited {
+                color: $white-color;
+            }
+        }
+
+    }
+
+    .brand{
         .title {
             font-size: 3.2rem;
             font-weight: 600;
@@ -22,31 +36,53 @@
             font-size: 1.313rem;
             margin: 10px auto 0;
         }
-
-        .breadcrumb {
-            justify-content: center;
-        }
-
-        a,
-        a:link,
-        a:visited {
-            color: white;
-        }
     }
 
     h4.description{
         font-size: 1.5em;
     }
+
+    .page-header.omit-hero-image {
+        padding-top: 5em;
+        height: unset;
+        background: white;
+        color: black;
+
+        .brand{
+            color: $black-color;
+            text-align: left;
+
+            .breadcrumb {
+                padding: 0;
+            }
+
+            .breadcrumb-item + .breadcrumb-item::before {
+                color: $black-color;
+            }
+        
+            a,
+            a:link,
+            a:visited {
+                color: $black-color;
+            }
+        }
+
+        .title {
+            color: $black-color;
+        }
+
+    }
+
 }
 
 .home-page, .category-page {
-    .page-header{
+    .page-header.has-hero-image{
         height: 85vh;
     }
 }
 
 .post-page {
-    .page-header{
+    .page-header.has-hero-image{
         height: 70vh;
     }
 
@@ -221,7 +257,7 @@
   }
 
     .post-page {
-        .page-header{
+        .page-header.has-hero-image{
             height: 80vh;
         }
     }
