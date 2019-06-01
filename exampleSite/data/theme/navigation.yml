@@ -1,14 +1,1 @@
 brand: "Hesti Blog"
-menu:
-  - name: "About"
-    url: "about/"
-  - name: "Categories"
-    url: "categories/"
-    dropdown: true
-    items:
-      - name: "First"
-        url: "first/"
-      - name: "Second"
-        url: "second/"
-  - name: "Posts"
-    url: "posts/"

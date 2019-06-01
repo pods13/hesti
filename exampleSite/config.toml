@@ -21,3 +21,19 @@ paginate = 1
 	[[related.indices]]
 		name  = "tags"
 		weight = 100
+[menu]
+	[[menu.main]]
+		identifier = "categories"
+		name = "categories"
+		url = "#"
+		weight = 10
+	[[menu.main]]
+		parent = "categories"
+		name = "Programming"
+		url = "/programming/"
+		weight = 10
+	[[menu.main]]
+		parent = "categories"
+		name = "Statistics"
+		url = "/statistics/"
+		weight = 10

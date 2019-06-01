@@ -17,23 +17,24 @@
 
 		<div id="navbar-menu" class="collapse navbar-collapse">
 			<ul class="navbar-nav ml-auto">
-				{{- range .menu -}}
-					{{- if .dropdown -}}
-						<li class="nav-item ">
-							<div class="dropdown dropdown-group">
-								<a class="nav-link" href="{{ $.Site.BaseURL }}{{ .url }}/">{{ .name }}</a>
+				{{- $currentPage := . -}}
+				{{- range $.Site.Menus.main -}}
+				{{- if .HasChildren -}}
+					<li class="nav-item ">
+						<div class="dropdown dropdown-group">
+							<a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
 
-								<span class="nav-link dropdown-toggle dropdown-toggle-split" id="{{ .url }}-dropdown-menu-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
-								<div class="dropdown-menu" aria-labelledby="{{ .url }}-dropdown-menu-link">
-									{{- range .items -}}
-										<a class="dropdown-item" href="{{ $.Site.BaseURL }}{{ .url }}/">{{ .name }}</a>
-									{{- end -}}
-								</div>
+							<span class="nav-link dropdown-toggle dropdown-toggle-split" id="{{ .URL }}-dropdown-menu-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
+							<div class="dropdown-menu" aria-labelledby="{{ .URL }}-dropdown-menu-link">
+								{{- range .Children -}}
+									<a class="dropdown-item" href="{{ .URL }}">{{ .Name }}</a>
+								{{- end -}}
 							</div>
-						</li>
-					{{- else -}}
-						<li class="nav-item"><a class="nav-link" href="{{ $.Site.BaseURL }}{{ .url }}/">{{ .name }}</a></li>
-					{{- end -}}
+						</div>
+					</li>
+				{{- else -}}
+					<li class="nav-item"><a class="nav-link" href="{{ .URL }}">{{ .Name }}</a></li>
+				{{- end -}}
 				{{- end -}}
 			</ul>
 		</div>
