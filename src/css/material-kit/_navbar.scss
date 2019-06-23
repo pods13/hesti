@@ -152,6 +152,18 @@
         color: $white-color;
     }
 
+    .logo {
+        fill: #9c27b0;
+    }
+
+    .logo-image {
+        width: 64px;    
+    }
+}
+
+
+.navbar-transparent .logo {
+    fill: #FFF; 
 }
 
 // for demo

@@ -10,6 +10,7 @@ paginate = 1
 [params]
 	image = "/images/hesti-header.jpg"
 	thumbnail = "/assets/images/default-thumbnail.jpg"
+	logo = "static/logo.svg"
 [taxonomies]
 	category = "categories"
 [permalinks]
