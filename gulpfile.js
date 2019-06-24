@@ -22,4 +22,11 @@ gulp.task('scripts', gulp.parallel('copy:vendor-scripts', 'build:scripts'));
 
 gulp.task('build:styles', buildStyles(gulp, settings, plugins));
 
+gulp.task('build:hugo', () => {
+	process.chdir(process.env.INIT_CWD);
+	return plugins.shell.task('hugo --debug')();
+});
+
+gulp.task('build:site', gulp.series(gulp.parallel('scripts', 'build:styles'), 'build:hugo'));
+
 gulp.task('default', gulp.parallel('scripts', 'build:styles'));
