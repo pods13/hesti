@@ -27,13 +27,15 @@
     "gulp": "^4.0.0",
     "gulp-better-rollup": "^4.0.1",
     "gulp-load-plugins": "^1.6.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
     "jquery": "^3.4.0",
     "lazysizes": "^5.1.0",
     "popper.js": "^1.15.0",
+    "rollup": "^1.16.2",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-babel-minify": "^8.0.0",
     "rollup-plugin-commonjs": "^10.0.0",
-    "rollup-plugin-node-resolve": "^5.0.4",
-    "rollup": "^1.16.2"
+    "rollup-plugin-node-resolve": "^5.0.4"
   }
 }
