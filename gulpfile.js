@@ -14,7 +14,7 @@ const buildScripts = require('./gulp-tasks/build-scripts');
 const buildStyles = require('./gulp-tasks/build-styles');
 const replaceAssetsAbsoluteUrl = require('./gulp-tasks/replace-assets-absolute-url');
 const minifyStyles = require('./gulp-tasks/minify-styles');
-
+const minifyHtml = require('./gulp-tasks/minify-html');
 
 gulp.task('build:scripts', buildScripts(gulp, settings, plugins));
 
@@ -33,10 +33,13 @@ gulp.task('build:hugo', () => {
 
 gulp.task('replace:assets-absolute-url', replaceAssetsAbsoluteUrl(gulp, settings, plugins));
 
+gulp.task('minify:html', minifyHtml(gulp, settings, plugins));
+
 gulp.task('build:site', gulp.series(gulp.parallel('scripts', 'build:styles'), 
 	'build:hugo', 
 	'replace:assets-absolute-url',
-	'minify:styles'
+	'minify:styles',
+	'minify:html'
 ));
 
 gulp.task('default', gulp.parallel('scripts', 'build:styles'));
