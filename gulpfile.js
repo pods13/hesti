@@ -1,20 +1,22 @@
 const { join } = require('path');
 const pathToPackage  = join(process.env.INIT_CWD, 'package.json');
-const { gulpConfig } = require(pathToPackage);
+const settings = require(pathToPackage).gulpSettings;
 
-const loadPlugins = require('gulp-load-plugins');
-const $ = loadPlugins({
-	pattern: ['*'],
-	scope: ['dependencies']
+const gulp = require('gulp');
+const gulpLoadPlugins = require('gulp-load-plugins');
+const plugins = gulpLoadPlugins({
+	DEBUG: false,
+	scope: ['dependencies'],
 });
 
-const gulp = $.gulp;
+const copyVendorScripts = require('./gulp-tasks/copy-vendor-scripts');
+const buildScripts = require('./gulp-tasks/build-scripts');
 
-const jsAssets = join(process.env.INIT_CWD, 'static/assets/js');
 
-gulp.task('vendor:scripts', () => {
-	return gulp.src(['node_modules/jquery/dist/jquery.slim.min.js', 'node_modules/popper.js/dist/umd/popper.min.js'])
-		.pipe(gulp.dest(jsAssets));
-});
+gulp.task('build:scripts', buildScripts(gulp, settings, plugins));
 
-gulp.task('default', gulp.series('vendor:scripts'));
+gulp.task('copy:vendor-scripts', copyVendorScripts(gulp, settings, plugins));
+
+gulp.task('scripts', gulp.parallel('copy:vendor-scripts', 'build:scripts'));
+
+gulp.task('default', gulp.series('scripts'));
