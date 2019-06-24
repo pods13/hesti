@@ -12,6 +12,7 @@ const plugins = gulpLoadPlugins({
 const copyVendorScripts = require('./gulp-tasks/copy-vendor-scripts');
 const buildScripts = require('./gulp-tasks/build-scripts');
 const buildStyles = require('./gulp-tasks/build-styles');
+const replaceAssetsAbsoluteUrl = require('./gulp-tasks/replace-assets-absolute-url');
 
 
 gulp.task('build:scripts', buildScripts(gulp, settings, plugins));
@@ -27,6 +28,8 @@ gulp.task('build:hugo', () => {
 	return plugins.shell.task('hugo --debug')();
 });
 
-gulp.task('build:site', gulp.series(gulp.parallel('scripts', 'build:styles'), 'build:hugo'));
+gulp.task('replace:assets-absolute-url', replaceAssetsAbsoluteUrl(gulp, settings, plugins));
+
+gulp.task('build:site', gulp.series(gulp.parallel('scripts', 'build:styles'), 'build:hugo', 'replace:assets-absolute-url'));
 
 gulp.task('default', gulp.parallel('scripts', 'build:styles'));
