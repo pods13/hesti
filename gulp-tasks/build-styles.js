@@ -1,6 +1,6 @@
 const path = require('path');
 module.exports = function (gulp, settings, plugins) {
-	const cssAssets = path.join(process.env.INIT_CWD, settings.cssAssets);
+	const cssAssets = path.join(process.env.INIT_CWD, 'static', settings.cssAssets);
 	return function() {
 		return gulp.src(settings.styleSources.base)
 			.pipe(plugins.sass({

@@ -13,6 +13,7 @@ const copyVendorScripts = require('./gulp-tasks/copy-vendor-scripts');
 const buildScripts = require('./gulp-tasks/build-scripts');
 const buildStyles = require('./gulp-tasks/build-styles');
 const replaceAssetsAbsoluteUrl = require('./gulp-tasks/replace-assets-absolute-url');
+const minifyStyles = require('./gulp-tasks/minify-styles');
 
 
 gulp.task('build:scripts', buildScripts(gulp, settings, plugins));
@@ -23,13 +24,19 @@ gulp.task('scripts', gulp.parallel('copy:vendor-scripts', 'build:scripts'));
 
 gulp.task('build:styles', buildStyles(gulp, settings, plugins));
 
+gulp.task('minify:styles', minifyStyles(gulp, settings, plugins));
+
 gulp.task('build:hugo', () => {
 	process.chdir(process.env.INIT_CWD);
-	return plugins.shell.task('hugo --debug')();
+	return plugins.shell.task('hugo')();
 });
 
 gulp.task('replace:assets-absolute-url', replaceAssetsAbsoluteUrl(gulp, settings, plugins));
 
-gulp.task('build:site', gulp.series(gulp.parallel('scripts', 'build:styles'), 'build:hugo', 'replace:assets-absolute-url'));
+gulp.task('build:site', gulp.series(gulp.parallel('scripts', 'build:styles'), 
+	'build:hugo', 
+	'replace:assets-absolute-url',
+	'minify:styles'
+));
 
 gulp.task('default', gulp.parallel('scripts', 'build:styles'));
