@@ -22,9 +22,11 @@ module.exports = function (gulp, settings, plugins) {
 		}
 	};
 	const jsAssets = join(process.env.INIT_CWD, settings.jsAssets);
-	const pathToExtendedJsSources = settings.jsSources.extended.map(path => join(process.env.INIT_CWD, path));
+	const extendedJsSources = settings.jsSources.extended || [];
+	const pathToExtendedJsSources = extendedJsSources.map(path => join(process.env.INIT_CWD, path));
+	const baseJsSources = settings.jsSources.base || [];
 	return function() {
-		return gulp.src(pathToExtendedJsSources.concat(settings.jsSources.base))
+		return gulp.src(pathToExtendedJsSources.concat(baseJsSources))
 			.pipe(plugins.betterRollup({  
 				external: ['jquery', 'popper.js'],
 				plugins: [babel(babelOpts), resolve(), cjs(cjsOpts), minify({comments: false})] 

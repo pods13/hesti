@@ -10,7 +10,8 @@ module.exports = function (gulp, settings, plugins) {
 	const stylePattern = '/**/*.css';
 	const styleFiles = cssAssets + stylePattern;
 	const defaultHtmlFilesToParseStyles = ['/index.html', '/404.html'];
-	const htmlFiles = defaultHtmlFilesToParseStyles.concat(settings.htmlFilesToParseStyles).map(file => settings.distFolder + file);
+	const htmlFilesToParseStyles = settings.htmlFilesToParseStyles || [];
+	const htmlFiles = defaultHtmlFilesToParseStyles.concat(htmlFilesToParseStyles).map(file => settings.distFolder + file);
 	const defaultSelectorsToIgnore = [/.*\.ripple.*/, 
 		/.*\.dropdown-menu.*/,
 		/.*\.show/,
@@ -19,9 +20,11 @@ module.exports = function (gulp, settings, plugins) {
 		/.*\.nav-open.*/
 	];
 
-	const selectorsToIgnore = defaultSelectorsToIgnore.concat(settings.selectorsToIgnore);
+
+	const selectorsToIgnore = settings.selectorsToIgnore || [];
+	const ignoredSelectors = defaultSelectorsToIgnore.concat(selectorsToIgnore);
 	return function() {
-		const uncssOptions = {htmlroot: distFolder, html: htmlFiles, ignore: selectorsToIgnore };
+		const uncssOptions = {htmlroot: distFolder, html: htmlFiles, ignore: ignoredSelectors };
 		return gulp.src(styleFiles)
 			.pipe(plugins.postcss([ uncss(uncssOptions) ]))
 			.pipe(plugins.postcss([ autoprefixer(), csso({ comments: false }) ]))
