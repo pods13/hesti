@@ -59,7 +59,8 @@ gulp.task('build:site', gulp.series(gulp.parallel('scripts', 'build:styles'),
 	'minify:html'
 ));
 
-gulp.task('publish:site', () => ghpages.publish(settings.distDir));
+gulp.task('publish:site', () => 
+	ghpages.publish(settings.distDir, (err) => console.log(`Cannot publish site: ${err}`)));
 
 gulp.task('watch:scripts', () => {
 	const jsGlob = '/**/*.js';
