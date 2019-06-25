@@ -59,11 +59,12 @@ gulp.task('build:site', gulp.series(gulp.parallel('scripts', 'build:styles'),
 	'minify:html'
 ));
 
-gulp.task('publish:site', () => {
+gulp.task('publish:site', (done) => {
 	ghpages.publish(settings.distDir, (err) => {
 		if(err) {
-			throw new Error(`Cannot publish site: ${err}`);
+			return done(`Cannot publish site: ${err}`);
 		}
+		return done();
 	});
 });
 
