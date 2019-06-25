@@ -23,14 +23,16 @@ module.exports = function (gulp, settings, plugins) {
 	};
 	const jsAssets = join(process.env.INIT_CWD, 'static', settings.jsAssets);
 	const extendedJsSources = settings.jsSources.extended || [];
-	const pathToExtendedJsSources = extendedJsSources.map(path => join(process.env.INIT_CWD, path));
+	const pathToExtendedJsSources = extendedJsSources.map(file => join(process.env.INIT_CWD, settings.jsSourceDirPath, file));
 	const baseJsSources = settings.jsSources.base || [];
+	const pathTobaseJsSources = baseJsSources.map(file => join(settings.jsSourceDirPath, file));
 	return function() {
-		return gulp.src(pathToExtendedJsSources.concat(baseJsSources))
+		return gulp.src(pathToExtendedJsSources.concat(pathTobaseJsSources))
 			.pipe(plugins.betterRollup({  
 				external: ['jquery', 'popper.js'],
 				plugins: [babel(babelOpts), resolve(), cjs(cjsOpts), minify({comments: false})] 
 			}, { format: 'umd', globals: { 'jquery': 'jQuery', 'popper.js' : 'Popper' }}))
+			.pipe(plugins.rename({dirname: ''}))
 			.pipe(gulp.dest(jsAssets));
 	}
 };
