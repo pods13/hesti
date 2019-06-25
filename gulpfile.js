@@ -60,7 +60,7 @@ gulp.task('build:site', gulp.series(gulp.parallel('scripts', 'build:styles'),
 ));
 
 gulp.task('publish:site', (done) => {
-	ghpages.publish(settings.distDir, (err) => {
+	ghpages.publish(settings.distDir, { silent: true }, (err) => {
 		if(err) {
 			return done(`Cannot publish site: ${err}`);
 		}
