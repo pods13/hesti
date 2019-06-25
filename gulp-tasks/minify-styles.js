@@ -5,13 +5,13 @@ const autoprefixer = require('autoprefixer');
 const csso = require('postcss-csso');
 
 module.exports = function (gulp, settings, plugins) {
-	const distFolder = path.join(process.env.INIT_CWD, settings.distFolder);
-	const cssAssets = path.join(distFolder, settings.cssAssets);
+	const distDir = path.join(process.env.INIT_CWD, settings.distDir);
+	const cssAssets = path.join(distDir, settings.cssAssets);
 	const styleGlob = '/**/*.css';
 	const styleFiles = cssAssets + styleGlob;
 	const defaultHtmlFilesToParseStyles = ['/index.html', '/404.html'];
 	const htmlFilesToParseStyles = settings.htmlFilesToParseStyles || [];
-	const htmlFiles = defaultHtmlFilesToParseStyles.concat(htmlFilesToParseStyles).map(file => settings.distFolder + file);
+	const htmlFiles = defaultHtmlFilesToParseStyles.concat(htmlFilesToParseStyles).map(file => settings.distDir + file);
 	const defaultSelectorsToIgnore = [/.*\.ripple.*/, 
 		/.*\.dropdown-menu.*/,
 		/.*\.show/,
@@ -24,7 +24,7 @@ module.exports = function (gulp, settings, plugins) {
 	const selectorsToIgnore = settings.selectorsToIgnore || [];
 	const ignoredSelectors = defaultSelectorsToIgnore.concat(selectorsToIgnore);
 	return function() {
-		const uncssOptions = {htmlroot: distFolder, html: htmlFiles, ignore: ignoredSelectors };
+		const uncssOptions = {htmlroot: distDir, html: htmlFiles, ignore: ignoredSelectors };
 		return gulp.src(styleFiles)
 			.pipe(plugins.postcss([ uncss(uncssOptions) ]))
 			.pipe(plugins.postcss([ autoprefixer(), csso({ comments: false }) ]))
