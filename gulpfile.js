@@ -9,6 +9,7 @@ const plugins = gulpLoadPlugins({
 	DEBUG: false,
 	scope: ['dependencies'],
 });
+const ghpages = require('gh-pages');
 
 const copyVendorScripts = require('./gulp-tasks/copy-vendor-scripts');
 const buildScripts = require('./gulp-tasks/build-scripts');
@@ -61,6 +62,11 @@ gulp.task('build:site', gulp.series(gulp.parallel('scripts', 'build:styles'),
 	'minify:styles',
 	'minify:html'
 ));
+
+gulp.task('publish:site', () => {
+	process.chdir(process.env.INIT_CWD);
+	return ghpages.publish(settings.distDir);
+});
 
 gulp.task('watch:scripts', () => {
 	const jsGlob = '/**/*.js';
