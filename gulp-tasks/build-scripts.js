@@ -21,9 +21,9 @@ module.exports = function (gulp, settings, plugins) {
 			'node_modules/jquery/dist/jquery.js': 'jquery',
 		}
 	};
-	const jsAssets = join(process.env.INIT_CWD, 'static', settings.jsAssets);
-	const pathToExtendedJsSources = settings.jsSources.extended.map(file => join(process.env.INIT_CWD, settings.jsSourceDirPath, file));
-	const pathToBaseJsSources = settings.jsSources.base.map(file => join(settings.jsSourceDirPath, file));
+	const jsAssets = join('static', settings.jsAssets);
+	const pathToExtendedJsSources = settings.jsSources.extended.map(file => join(settings.jsSourceDirPath, file));
+	const pathToBaseJsSources = settings.jsSources.base.map(file => join('themes', 'hesti', settings.jsSourceDirPath, file));
 	return function() {
 		return gulp.src(pathToExtendedJsSources.concat(pathToBaseJsSources))
 			.pipe(plugins.betterRollup({  

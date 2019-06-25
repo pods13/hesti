@@ -1,6 +1,5 @@
 const { join } = require('path');
-const pathToPackage  = join(process.env.INIT_CWD, 'package.json');
-const {gulpSettings} = require(pathToPackage);
+const { gulpSettings } = require(join(process.cwd(), 'package.json'));
 
 const _ = require('lodash');
 const gulp = require('gulp');
@@ -48,7 +47,6 @@ gulp.task('build:styles', buildStyles(gulp, settings, plugins));
 gulp.task('minify:styles', minifyStyles(gulp, settings, plugins));
 
 gulp.task('build:hugo', () => {
-	process.chdir(process.env.INIT_CWD);
 	return plugins.shell.task('hugo')();
 });
 
@@ -63,10 +61,7 @@ gulp.task('build:site', gulp.series(gulp.parallel('scripts', 'build:styles'),
 	'minify:html'
 ));
 
-gulp.task('publish:site', () => {
-	process.chdir(process.env.INIT_CWD);
-	return ghpages.publish(settings.distDir);
-});
+gulp.task('publish:site', ghpages.publish(settings.distDir));
 
 gulp.task('watch:scripts', () => {
 	const jsGlob = '/**/*.js';
@@ -79,7 +74,7 @@ gulp.task('watch:styles', () => {
 });
 
 const watchDirectory = (pathToDir, glob, task) => {
-	const dirs = [pathToDir, '../../' + pathToDir];
+	const dirs = [pathToDir, 'themes/hesti/' + pathToDir];
 	return gulp.watch(dirs.map(dir => dir + glob), gulp.series(task));
 }
 

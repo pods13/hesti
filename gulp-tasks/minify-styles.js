@@ -5,7 +5,7 @@ const autoprefixer = require('autoprefixer');
 const csso = require('postcss-csso');
 
 module.exports = function (gulp, settings, plugins) {
-	const distDir = path.join(process.env.INIT_CWD, settings.distDir);
+	const distDir = settings.distDir;
 	const cssAssets = path.join(distDir, settings.cssAssets);
 	const styleGlob = '/**/*.css';
 	const styleFiles = cssAssets + styleGlob;
