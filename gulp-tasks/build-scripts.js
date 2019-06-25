@@ -21,7 +21,7 @@ module.exports = function (gulp, settings, plugins) {
 			'node_modules/jquery/dist/jquery.js': 'jquery',
 		}
 	};
-	const jsAssets = join(process.env.INIT_CWD, settings.jsAssets);
+	const jsAssets = join(process.env.INIT_CWD, 'static', settings.jsAssets);
 	const extendedJsSources = settings.jsSources.extended || [];
 	const pathToExtendedJsSources = extendedJsSources.map(path => join(process.env.INIT_CWD, path));
 	const baseJsSources = settings.jsSources.base || [];
