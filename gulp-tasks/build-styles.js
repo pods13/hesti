@@ -1,8 +1,7 @@
 const path = require('path');
 module.exports = function (gulp, settings, plugins) {
 	const cssAssets = path.join(process.env.INIT_CWD, 'static', settings.cssAssets);
-	const baseStyleSources = settings.styleSources.base || [];
-	const pathToBaseStyleSources = baseStyleSources.map(file => join(settings.stylesSourceDirPath, file));
+	const pathToBaseStyleSources = settings.styleSources.base.map(file => path.join(settings.stylesSourceDirPath, file));
 	return function() {
 		return gulp.src(pathToBaseStyleSources)
 			.pipe(plugins.sass({
@@ -13,6 +12,7 @@ module.exports = function (gulp, settings, plugins) {
 					file.basename = 'hesti';
 				}
 			}))
+			.pipe(plugins.rename({dirname: ''}))
 			.pipe(gulp.dest(cssAssets));
 	}
 };

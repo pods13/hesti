@@ -21,8 +21,7 @@ module.exports = function (gulp, settings, plugins) {
 	];
 
 
-	const selectorsToIgnore = settings.selectorsToIgnore || [];
-	const ignoredSelectors = defaultSelectorsToIgnore.concat(selectorsToIgnore);
+	const ignoredSelectors = defaultSelectorsToIgnore.concat(settings.selectorsToIgnore);
 	return function() {
 		const uncssOptions = {htmlroot: distDir, html: htmlFiles, ignore: ignoredSelectors };
 		return gulp.src(styleFiles)

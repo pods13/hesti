@@ -22,10 +22,8 @@ module.exports = function (gulp, settings, plugins) {
 		}
 	};
 	const jsAssets = join(process.env.INIT_CWD, 'static', settings.jsAssets);
-	const extendedJsSources = settings.jsSources.extended || [];
-	const pathToExtendedJsSources = extendedJsSources.map(file => join(process.env.INIT_CWD, settings.jsSourceDirPath, file));
-	const baseJsSources = settings.jsSources.base || [];
-	const pathToBaseJsSources = baseJsSources.map(file => join(settings.jsSourceDirPath, file));
+	const pathToExtendedJsSources = settings.jsSources.extended.map(file => join(process.env.INIT_CWD, settings.jsSourceDirPath, file));
+	const pathToBaseJsSources = settings.jsSources.base.map(file => join(settings.jsSourceDirPath, file));
 	return function() {
 		return gulp.src(pathToExtendedJsSources.concat(pathToBaseJsSources))
 			.pipe(plugins.betterRollup({  

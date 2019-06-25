@@ -36,6 +36,7 @@
     "gulp-shell": "^0.7.1",
     "jquery": "^3.4.0",
     "lazysizes": "^5.1.0",
+    "lodash": "^4.17.11",
     "popper.js": "^1.15.0",
     "postcss": "^7.0.17",
     "postcss-csso": "^3.0.0",

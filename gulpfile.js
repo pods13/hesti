@@ -1,11 +1,12 @@
 const { join } = require('path');
 const pathToPackage  = join(process.env.INIT_CWD, 'package.json');
-const settings = require(pathToPackage).gulpSettings;
+const {gulpSettings} = require(pathToPackage);
 
+const _ = require('lodash');
 const gulp = require('gulp');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const plugins = gulpLoadPlugins({
-	DEBUG: true,
+	DEBUG: false,
 	scope: ['dependencies'],
 });
 
@@ -15,6 +16,25 @@ const buildStyles = require('./gulp-tasks/build-styles');
 const replaceAssetsAbsoluteUrl = require('./gulp-tasks/replace-assets-absolute-url');
 const minifyStyles = require('./gulp-tasks/minify-styles');
 const minifyHtml = require('./gulp-tasks/minify-html');
+
+const defaultSettings = {
+	jsAssets: "assets/js",
+	cssAssets: "assets/css",
+	distDir: "public",
+	jsSourceDirPath: "src/js",
+	stylesSourceDirPath: "src/styles",
+	jsSources: {
+		base: [],
+		extended: []
+	},
+	styleSources: {
+		base: [],
+		extended: []
+	},
+	htmlFilesToParseStyles: [],
+	selectorsToIgnore: []
+}
+const settings = _.merge({}, defaultSettings, gulpSettings);
 
 gulp.task('build:scripts', buildScripts(gulp, settings, plugins));
 
