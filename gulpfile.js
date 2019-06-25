@@ -46,9 +46,7 @@ gulp.task('build:styles', buildStyles(gulp, settings, plugins));
 
 gulp.task('minify:styles', minifyStyles(gulp, settings, plugins));
 
-gulp.task('build:hugo', () => {
-	return plugins.shell.task('hugo')();
-});
+gulp.task('build:hugo', plugins.shell.task('hugo'));
 
 gulp.task('replace:assets-absolute-url', replaceAssetsAbsoluteUrl(gulp, settings, plugins));
 
@@ -61,7 +59,7 @@ gulp.task('build:site', gulp.series(gulp.parallel('scripts', 'build:styles'),
 	'minify:html'
 ));
 
-gulp.task('publish:site', ghpages.publish(settings.distDir));
+gulp.task('publish:site', () => ghpages.publish(settings.distDir));
 
 gulp.task('watch:scripts', () => {
 	const jsGlob = '/**/*.js';
