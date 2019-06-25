@@ -7,8 +7,8 @@ const csso = require('postcss-csso');
 module.exports = function (gulp, settings, plugins) {
 	const distFolder = path.join(process.env.INIT_CWD, settings.distFolder);
 	const cssAssets = path.join(distFolder, settings.cssAssets);
-	const stylePattern = '/**/*.css';
-	const styleFiles = cssAssets + stylePattern;
+	const styleGlob = '/**/*.css';
+	const styleFiles = cssAssets + styleGlob;
 	const defaultHtmlFilesToParseStyles = ['/index.html', '/404.html'];
 	const htmlFilesToParseStyles = settings.htmlFilesToParseStyles || [];
 	const htmlFiles = defaultHtmlFilesToParseStyles.concat(htmlFilesToParseStyles).map(file => settings.distFolder + file);

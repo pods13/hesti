@@ -42,4 +42,21 @@ gulp.task('build:site', gulp.series(gulp.parallel('scripts', 'build:styles'),
 	'minify:html'
 ));
 
-gulp.task('default', gulp.parallel('scripts', 'build:styles'));
+gulp.task('watch:scripts', () => {
+	const jsGlob = '/**/*.js';
+	return watchDirectory(settings.jsSourceDirPath, jsGlob, 'build:scripts');
+});
+
+gulp.task('watch:styles', () => {
+	const scssGlob = '/**/*.scss';
+	return watchDirectory(settings.stylesSourceDirPath, scssGlob, 'build:styles');
+});
+
+const watchDirectory = (pathToDir, glob, task) => {
+	const dirs = [pathToDir, '../../' + pathToDir];
+	return gulp.watch(dirs.map(dir => dir + glob), gulp.series(task));
+}
+
+gulp.task('watch', gulp.parallel('watch:styles', 'watch:scripts'));
+
+gulp.task('default', gulp.series(gulp.parallel('scripts', 'build:styles'), 'watch'));
