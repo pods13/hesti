@@ -25,9 +25,9 @@ module.exports = function (gulp, settings, plugins) {
 	const extendedJsSources = settings.jsSources.extended || [];
 	const pathToExtendedJsSources = extendedJsSources.map(file => join(process.env.INIT_CWD, settings.jsSourceDirPath, file));
 	const baseJsSources = settings.jsSources.base || [];
-	const pathTobaseJsSources = baseJsSources.map(file => join(settings.jsSourceDirPath, file));
+	const pathToBaseJsSources = baseJsSources.map(file => join(settings.jsSourceDirPath, file));
 	return function() {
-		return gulp.src(pathToExtendedJsSources.concat(pathTobaseJsSources))
+		return gulp.src(pathToExtendedJsSources.concat(pathToBaseJsSources))
 			.pipe(plugins.betterRollup({  
 				external: ['jquery', 'popper.js'],
 				plugins: [babel(babelOpts), resolve(), cjs(cjsOpts), minify({comments: false})] 
