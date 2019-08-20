@@ -4,7 +4,7 @@ module.exports = function (gulp, settings, plugins) {
 	const htmlFiles = distDir + htmlGlob;
 	return function() {
 		return gulp.src(htmlFiles)
-			.pipe(plugins.replace(/https?:\/\/.+?\/assets\//g, '/assets/'))
+			.pipe(plugins.replace(/https?:\/\/\S+?\/assets\//g, '/assets/'))
 			.pipe(gulp.dest(distDir));
 	}
 };
