@@ -60,7 +60,9 @@ gulp.task('build:site', gulp.series(gulp.parallel('scripts', 'build:styles'),
 ));
 
 gulp.task('publish:site', (done) => {
-	ghpages.publish(settings.distDir, { silent: true }, (err) => {
+	const timestamp = Math.floor(new Date() / 1000);
+	const message = `Publish new version of the site: ${timestamp} [ci skip]`;
+	ghpages.publish(settings.distDir, { silent: true, message }, (err) => {
 		if(err) {
 			return done(`Cannot publish site: ${err}`);
 		}
