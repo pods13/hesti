@@ -1,18 +1,18 @@
-{{$pag := $.Paginator}}
-{{- if gt $pag.TotalPages 1 -}}
+{{ $paginator := .Paginator }}
+{{- if gt $paginator.TotalPages 1 -}}
 	<section class="container">
 		<div class="row">
 			<div class="col-md-12 ml-auto mr-auto">
 				<nav role="navigation" aria-label="pagination">
 					<ul class="pagination justify-content-center">
-						{{- if $pag.HasPrev -}}
-							<li class="page-item"><a class="prev page-link" href="{{ $pag.Prev.URL }}" aria-label="Go to Previous page">Previous</a></li>
+						{{- if $paginator.HasPrev -}}
+							<li class="page-item"><a class="prev page-link" href="{{ $paginator.Prev.URL }}" aria-label="Go to Previous page">Previous</a></li>
 						{{- end -}}
 						{{ $.Scratch.Set "__paginator.ellipsed" false }}
-						{{ range $pag.Pagers }}
+						{{ range $paginator.Pagers }}
 							{{ $right := sub .TotalPages .PageNumber }}
 							{{ $showNumber := or (le .PageNumber 3) (eq $right 0) }}
-							{{ $showNumber := or $showNumber (and (gt .PageNumber (sub $pag.PageNumber 2)) (lt .PageNumber (add $pag.PageNumber 2)))  }}
+							{{ $showNumber := or $showNumber (and (gt .PageNumber (sub $paginator.PageNumber 2)) (lt .PageNumber (add $paginator.PageNumber 2)))  }}
 							{{ if $showNumber }}
 								{{ $.Scratch.Set "__paginator.ellipsed" false }}
 								{{ $.Scratch.Set "__paginator.shouldEllipse" false }}
@@ -21,14 +21,14 @@
 								{{ $.Scratch.Set "__paginator.ellipsed" true }}
 							{{ end }}
 							{{ if $showNumber }}
-								{{ if eq . $pag }}
+								{{ if eq . $paginator }}
 									<li class="page-item active">
 										<a class="page-link disabled" href="#" aria-label="Page {{ .PageNumber }}" aria-current="page">
 											{{- .PageNumber -}}
 										</a>
 									</li>
 								{{ end }}
-								{{ if ne . $pag }}
+								{{ if ne . $paginator }}
 									<li class="page-item">
 										<a class="page-link" href="{{ .URL }}" aria-label="Go to page {{ .PageNumber }}">
 											{{- .PageNumber -}}
@@ -39,9 +39,9 @@
 								<li class="page-item"><span class="pagination-ellipsis">&hellip;</span></li>
 							{{ end }}
 						{{ end }}
-						{{- if $pag.HasNext -}}
+						{{- if $paginator.HasNext -}}
 							<li class="page-item">
-								<a class="next page-link" href="{{ $pag.Next.URL }}" aria-label="Go to Next page">Next</a>
+								<a class="next page-link" href="{{ $paginator.Next.URL }}" aria-label="Go to Next page">Next</a>
 							</li>
 						{{- end -}}
 					</ul>
