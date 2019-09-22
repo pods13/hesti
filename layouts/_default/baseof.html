@@ -107,7 +107,7 @@
 	</header>
 	{{- end -}}
 	{{- block "main" . -}}
-	{{- $isMainBlockRaised := and (ne .Params.omitHeroImage true) (or (.IsHome) (eq .Kind "taxonomy") (eq .Params.layout "post")) -}}
+	{{- $isMainBlockRaised := and (ne .Params.mainRaised false) (ne .Params.omitHeroImage true) (or (.IsHome) (eq .Kind "taxonomy") (eq .Params.layout "post")) -}}
 	<div class="main{{ .Scratch.Get "mainClasses" }} {{ cond (eq $isMainBlockRaised true) " main-raised " "" }}">
 		{{- block "main-body" . -}}{{- end -}}
 		{{- $hasFooterImage := cond (isset .Params "footerimage") true false -}}
