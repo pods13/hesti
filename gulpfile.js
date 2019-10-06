@@ -8,6 +8,8 @@ const plugins = gulpLoadPlugins({
 	DEBUG: false,
 	scope: ['dependencies'],
 });
+const { execFile } = require('child_process');
+const hugo = require('hugo-bin');
 const ghpages = require('gh-pages');
 
 const copyVendorScripts = require('./gulp-tasks/copy-vendor-scripts');
@@ -46,7 +48,7 @@ gulp.task('build:styles', buildStyles(gulp, settings, plugins));
 
 gulp.task('minify:styles', minifyStyles(gulp, settings, plugins));
 
-gulp.task('build:hugo', plugins.shell.task('hugo'));
+gulp.task('build:hugo', () => execFile(hugo));
 
 gulp.task('replace:assets-absolute-url', replaceAssetsAbsoluteUrl(gulp, settings, plugins));
 
