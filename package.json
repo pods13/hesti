@@ -1,8 +1,7 @@
 {
   "name": "hesti",
   "version": "1.0.0",
-  "description": "TODO\r Fix menu - after scroll it has to become white\r Remove sidebar for now\r On category page show same posts card as on the home page\r Full width post\r Responsivness + scss config",
-  "main": "index.js",
+  "description": "Extendable hugo theme",
   "scripts": {
     "start": "concurrently \"gulp\" \"hugo serve -s exampleSite \""
   },
@@ -18,12 +17,36 @@
   },
   "homepage": "https://github.com/pods13/hesti#readme",
   "dependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "autoprefixer": "^9.6.0",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "bootstrap": "4.0.x",
+    "bootstrap-material-design": "^4.1.1",
     "concurrently": "^4.1.0",
+    "gh-pages": "^2.0.1",
     "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^6.0.0",
+    "gulp-better-rollup": "^4.0.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-load-plugins": "^1.6.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.0.2",
-    "node-sass-magic-importer": "^5.2.0",
-    "rimraf": "^2.6.2",
-    "bootstrap": "4.0.x"
+    "gulp-shell": "^0.7.1",
+    "jquery": "^3.4.0",
+    "lazysizes": "^5.1.0",
+    "lodash": "^4.17.11",
+    "popper.js": "^1.15.0",
+    "postcss": "^7.0.17",
+    "postcss-csso": "^3.0.0",
+    "postcss-uncss": "^0.16.1",
+    "rollup": "^1.16.2",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-babel-minify": "^8.0.0",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-node-resolve": "^5.0.4",
+    "uncss": "^0.16.0"
   }
 }

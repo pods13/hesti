@@ -1,50 +1,90 @@
+const { join } = require('path');
+const { gulpSettings } = require(join(process.cwd(), 'package.json'));
+
+const _ = require('lodash');
 const gulp = require('gulp');
-const sass = require('gulp-sass');
-const rimraf = require('rimraf');
-const autoprefixer = require('gulp-autoprefixer');
+const gulpLoadPlugins = require('gulp-load-plugins');
+const plugins = gulpLoadPlugins({
+	DEBUG: false,
+	scope: ['dependencies'],
+});
+const ghpages = require('gh-pages');
 
-const stylesSource = 'src/css/**/*.scss';
-const stylesDestDirectory = 'static/assets/css';
-const jsSource = 'src/js/**/*.js';
-const jsDestDirectory = 'static/assets/js';
+const copyVendorScripts = require('./gulp-tasks/copy-vendor-scripts');
+const buildScripts = require('./gulp-tasks/build-scripts');
+const buildStyles = require('./gulp-tasks/build-styles');
+const replaceAssetsAbsoluteUrl = require('./gulp-tasks/replace-assets-absolute-url');
+const minifyStyles = require('./gulp-tasks/minify-styles');
+const minifyHtml = require('./gulp-tasks/minify-html');
 
-function removeFilesFromDirectory(dir) {
-	console.log('invoked')
-	return function(cb) {
-		rimraf.sync(`${dir}/*`);
-		cb();
-	}
+const defaultSettings = {
+	jsAssets: "assets/js",
+	cssAssets: "assets/css",
+	distDir: "public",
+	jsSourceDirPath: "src/js",
+	stylesSourceDirPath: "src/styles",
+	jsSources: {
+		base: [],
+		extended: []
+	},
+	styleSources: {
+		base: [],
+		extended: []
+	},
+	htmlFilesToParseStyles: [],
+	selectorsToIgnore: []
 }
+const settings = _.merge({}, defaultSettings, gulpSettings);
 
-gulp.task('clean:styles', removeFilesFromDirectory(stylesDestDirectory));
+gulp.task('build:scripts', buildScripts(gulp, settings, plugins));
 
-gulp.task('styles', gulp.series('clean:styles', () => {
-	return gulp.src(stylesSource)
-		.pipe(sass({
-			includePaths: ['node_modules'],
-			outputStyle: 'compressed'
-		}).on('error', sass.logError))
-		.pipe(autoprefixer())
-		.pipe(gulp.dest(stylesDestDirectory));	
-}));
+gulp.task('copy:vendor-scripts', copyVendorScripts(gulp, settings, plugins));
+
+gulp.task('scripts', gulp.parallel('copy:vendor-scripts', 'build:scripts'));
+
+gulp.task('build:styles', buildStyles(gulp, settings, plugins));
+
+gulp.task('minify:styles', minifyStyles(gulp, settings, plugins));
+
+gulp.task('build:hugo', plugins.shell.task('hugo'));
+
+gulp.task('replace:assets-absolute-url', replaceAssetsAbsoluteUrl(gulp, settings, plugins));
+
+gulp.task('minify:html', minifyHtml(gulp, settings, plugins));
+
+gulp.task('build:site', gulp.series(gulp.parallel('scripts', 'build:styles'), 
+	'build:hugo', 
+	'replace:assets-absolute-url',
+	'minify:styles',
+	'minify:html'
+));
+
+gulp.task('publish:site', (done) => {
+	const timestamp = Math.floor(new Date() / 1000);
+	const message = `Publish new version of the site: ${timestamp} [ci skip]`;
+	ghpages.publish(settings.distDir, { silent: true, message }, (err) => {
+		if(err) {
+			return done(`Cannot publish site: ${err}`);
+		}
+		return done();
+	});
+});
+
+gulp.task('watch:scripts', () => {
+	const jsGlob = '/**/*.js';
+	return watchDirectory(settings.jsSourceDirPath, jsGlob, 'build:scripts');
+});
 
 gulp.task('watch:styles', () => {
-	return gulp.watch(stylesSource, gulp.series('styles'));
+	const scssGlob = '/**/*.scss';
+	return watchDirectory(settings.stylesSourceDirPath, scssGlob, 'build:styles');
 });
 
-gulp.task('clean:js', removeFilesFromDirectory(jsDestDirectory));
+const watchDirectory = (pathToDir, glob, task) => {
+	const dirs = [pathToDir, 'themes/hesti/' + pathToDir];
+	return gulp.watch(dirs.map(dir => dir + glob), gulp.series(task));
+}
 
-gulp.task('js', gulp.series('clean:js', () => {
-	return gulp.src(jsSource)
-		.pipe(gulp.dest(jsDestDirectory));	
-}));
+gulp.task('watch', gulp.parallel('watch:styles', 'watch:scripts'));
 
-gulp.task('watch:js', () => {
-	return gulp.watch(jsSource, gulp.series('js'));
-});
-
-gulp.task('watch', gulp.parallel('watch:styles', 'watch:js'));
-
-gulp.task('build', gulp.parallel('styles', 'js'));
-
-gulp.task('default', gulp.parallel('build', 'watch'));
+gulp.task('default', gulp.series(gulp.parallel('scripts', 'build:styles'), 'watch'));
