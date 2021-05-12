@@ -40,7 +40,7 @@
     "lazysizes": "^5.1.0",
     "lodash": "^4.17.11",
     "popper.js": "^1.15.0",
-    "postcss": "^7.0.17",
+    "postcss": "^8.2.10",
     "postcss-csso": "^3.0.0",
     "postcss-uncss": "^0.16.1",
     "rollup": "^1.16.2",
